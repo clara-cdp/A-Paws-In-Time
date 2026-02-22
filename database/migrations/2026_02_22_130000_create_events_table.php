@@ -27,7 +27,7 @@ return new class extends Migration
 
             // -> if PO is used -> unlocks next room 
             $table->foreignId('target_room_id')->nullable()->constrained('rooms');
-            $table->integer('advances_story')->default(0);
+            $table->integer('next_step')->default(0);
 
           
             $table->timestamps();

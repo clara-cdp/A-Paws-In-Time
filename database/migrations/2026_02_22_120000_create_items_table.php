@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('objects', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name', 45);
             $table->longText('description');
@@ -19,9 +19,6 @@ return new class extends Migration
 
             $table->boolean('is_portable')->default(false); // true = PO, false = IO
             $table->boolean('is_visible')->default(true);   // true = visible, false = hidden
-        
-            // This handles your 'collected' status
-            $table->boolean('is_collected')->default(false); 
 
             // Foreign Keys
             $table->foreignId('room_id')->constrained();
@@ -29,8 +26,6 @@ return new class extends Migration
 
             //css
             $table->string('css_id', 45)->unique();
-            $table->integer('pos_x'); 
-            $table->integer('pos_y'); 
         
             $table->timestamps();
         });
@@ -41,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('objects');
+        Schema::dropIfExists('items');
     }
 };

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('pocket_id')->constrained();
 
             //link to user
-            $table->integer('story_step')->default(0); // Added from your diagram
+            $table->integer('story_step')->default(0); // tracks point in the story
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); //no user, no player
             $table->timestamps();
     

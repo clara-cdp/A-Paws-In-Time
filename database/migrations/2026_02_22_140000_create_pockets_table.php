@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pockets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('player_id')->constrained()->onDelete('cascade'); // owner ->  can't play without a pocket
-            $table->foreignId('object_id')->constrained(); // collected items
+            $table->foreignId('item_id')->constrained(); // collected items
             $table->timestamps();
         });
     }
