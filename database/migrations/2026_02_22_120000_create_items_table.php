@@ -26,8 +26,6 @@ return new class extends Migration
 
             //css
             $table->string('css_id', 45)->unique();
-            $table->integer('pos_x'); 
-            $table->integer('pos_y'); 
         
             $table->timestamps();
         });
