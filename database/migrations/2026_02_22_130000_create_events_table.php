@@ -17,13 +17,13 @@ return new class extends Migration
             $table->string('verb_trigger', 45); 
         
             // -- trigger -- (not tiggers!)      
-            $table->foreignId('object_id')->constrained(); //the IO in the room
-            $table->foreignId('required_object_id')->nullable()->constrained('objects'); // the PO in a pocket
+            $table->foreignId('item_id')->constrained(); //the IO in the room
+            $table->foreignId('required_item_id')->nullable()->constrained('items'); // the PO in a pocket
 
             // --unlocks: ---
             // -> if IO is used -> sets visibility to true
             // -> if PO is used -> sets visibility to true & sets room to null (pocket)
-            $table->foreignId('unlocked_object_id')->nullable()->constrained('objects'); 
+            $table->foreignId('unlocked_item_id')->nullable()->constrained('items'); 
 
             // -> if PO is used -> unlocks next room 
             $table->foreignId('target_room_id')->nullable()->constrained('rooms');
