@@ -6,7 +6,7 @@ use App\Models\Room;
 use App\Models\Item;
 use App\Models\Event;
 
-class Chapter0Seeder extends Seeder
+class Chapter1Seeder extends Seeder
 {
     public function run(): void
     {
@@ -19,35 +19,21 @@ class Chapter0Seeder extends Seeder
 
         // ITEM IO tree
         $tree = Item::create([
-            'name' => 'Cypress',
             'css_id' => 'tree',
-            'image_url' => '/public/build/assets/items/tree.png',
+            'image_url' => null,
             'description' => 'Creepy Cypress',
-            'is_portable' => false, 'is_visible' => true,
+            'is_portable' => false, 
+            'is_visible' => true,
             'room_id' => $garden->id
         ]);
 
         //ITEM PO ball
         $ball = Item::create([
-            'name' => 'Tennis Ball',
             'css_id' => 'tennis_ball',
             'image_url' => '/public/build/assets/items/tennis_ball.png',
             'description' => 'You only live once, but you get to serve twice',
             'is_portable' => true, 
             'is_visible' => false, // Hidden until tree is pushed
-            'room_id' => $garden->id
-        ]);
-
-        //----------->>>  add flower pot here
-
-         //ITEM PO ball
-        $key = Item::create([
-            'name' => 'Mansion Key',
-            'css_id' => 'Key',
-            'image_url' => '/public/build/assets/items/key.png',
-            'description' => 'shinny!',
-            'is_portable' => true, 
-            'is_visible' => true, // temp. it will be Hidden until flower pot is moved
             'room_id' => $garden->id
         ]);
 
@@ -59,11 +45,75 @@ class Chapter0Seeder extends Seeder
             'advances_story' => 0
               ]);
 
+        // ---------- tool box & crowbar
+
+        // ITEM IO toolbox
+        $toolbox = Item::create([
+            'css_id' => 'toolbox',
+            'image_url' => null,
+            'description' => 'I have always wanted a toolbox',
+            'is_portable' => false, 
+            'is_visible' => true,
+            'room_id' => $garden->id
+        ]);
+
+        //ITEM PO Crowbar
+        $crowbar = Item::create([
+            'css_id' => 'Crowbar',
+            'image_url' => '/public/build/assets/items/toolbox.png',
+            'description' => 'So American!',
+            'is_portable' => true, 
+            'is_visible' => false, 
+            'room_id' => $garden->id
+        ]);
+
+
+        // EVENT -> find the crowbar
+        Event::create([
+            'verb_trigger' => 'OPEN',
+            'item_id' => $toolbox->id,
+            'unlocked_item_id' => $crowbar->id,
+            'advances_story' => 0
+              ]);
+
+
+        //statue and key --------------------------
+
+        //ITEM IO tentacle statue
+        $statue = Item::create([
+            'css_id' => 'statue',
+            'image_url' => null,
+            'description' => 'not this again...!',
+            'is_portable' => false, 
+            'is_visible' => true,
+            'room_id' => $garden->id
+        ]);
+
+        //ITEM PO Silver Key
+        $key = Item::create([
+            'css_id' => 'Key',
+            'image_url' => '/public/build/assets/items/key.png',
+            'description' => 'shinny!',
+            'is_portable' => true, 
+            'is_visible' => false, // Hidden until statue is pushed
+            'room_id' => $garden->id
+        ]);
+
+         // EVENT -> find the Mansion's key
+        Event::create([
+            'verb_trigger' => 'PUSH',
+            'item_id' => $statue->id,
+            'unlocked_item_id' => $key->id,
+            'advances_story' => 0
+              ]);
+
+        // ---------------- unlocking  CHAPTER 1 ---------------------------//
+        //--------- DOG AND DOOR
+
         // ITEM IO dog
         $dog = Item::create([
-            'name' => 'Mean Dog',
             'css_id' => 'dog',
-            'image_url' => '/public/build/assets/items/object_02.png',
+            'image_url' => null,
             'description' => 'You shall not pass!',
             'is_portable' => false, 
             'is_visible' => true,
@@ -81,19 +131,20 @@ class Chapter0Seeder extends Seeder
         ]);
 
 
-        // ---------------- CHAPTER 2 ---------------------------//
+        // ---------------- unlocking  CHAPTER 2 ---------------------------//
+        //------- opening mansion's door with a key
 
          // ITEM IO door
         $mansion_door = Item::create([
-            'name' => 'Mansion Door',
             'css_id' => 'mansion_entrance',
+            'image_url' => null,
             'description' => 'It is looked...',
             'is_portable' => false, 
             'is_visible' => true,
             'room_id' => $garden->id
         ]);
 
-          // ROOM 2 present library
+        // ROOM 2 present library
          $presentLibrary = Room::create([
             'name' => 'The Garden',
             'description' => 'a library in the present',
@@ -110,9 +161,44 @@ class Chapter0Seeder extends Seeder
             'next_step' => 2   // access to the present library         
         ]);
 
-        
+
+        /*----------------------
+        ELEMENTS USED IN NEXT CHAPTERS!
+        ---------------------------*/
+
+          // PO cuckoo bird ------------- event chapter 2!
+        $cuckoo = Item::create([
+            'css_id' => 'cuckoo',
+            'image_url' => '/public/build/assets/items/cuckoo',
+            'description' => "I can't carry that!",
+            'is_portable' => true, 
+            'is_visible' => true,
+            'room_id' => $garden->id
+        ]);
+
+        // ITEM IO grease pot ------------- event chapter 3!
+        $greasePot = Item::create([
+            'css_id' => 'grease_pot',
+            'image_url' => null,
+            'description' => "I can't carry that!",
+            'is_portable' => false, 
+            'is_visible' => true,
+            'room_id' => $garden->id
+        ]);
+
+
+        // ITEM IO ------------- event chapter 5?!
+        $seed = Item::create([
+            'css_id' => 'grease_pot',
+            'image_url' => null,
+            'description' => "I can't carry that!",
+            'is_portable' => false, 
+            'is_visible' => true,
+            'room_id' => $garden->id
+        ]);
+
+      /*  * * * * *  CHAPTER 2 * * * * * * * * */
 
       
-
     }
 }
