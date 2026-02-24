@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->longText('description');
-            $table->string('image_url', 45); 
-
+            $table->string('image_url', 45)->nullable();
+            
             $table->boolean('is_portable')->default(false); // true = PO, false = IO
             $table->boolean('is_visible')->default(true);   // true = visible, false = hidden
 

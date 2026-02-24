@@ -42,7 +42,7 @@ class Chapter1Seeder extends Seeder
             'verb_trigger' => 'PUSH',
             'item_id' => $tree->id,
             'unlocked_item_id' => $ball->id,
-            'advances_story' => 0
+            'next_step' => 0
               ]);
 
         // ---------- tool box & crowbar
@@ -73,7 +73,7 @@ class Chapter1Seeder extends Seeder
             'verb_trigger' => 'OPEN',
             'item_id' => $toolbox->id,
             'unlocked_item_id' => $crowbar->id,
-            'advances_story' => 0
+            'next_step' => 0
               ]);
 
 
@@ -104,7 +104,7 @@ class Chapter1Seeder extends Seeder
             'verb_trigger' => 'PUSH',
             'item_id' => $statue->id,
             'unlocked_item_id' => $key->id,
-            'advances_story' => 0
+            'next_step' => 0
               ]);
 
         // ---------------- unlocking  CHAPTER 1 ---------------------------//
@@ -152,7 +152,7 @@ class Chapter1Seeder extends Seeder
         ]);
 
           // EVENT -> open door
-        $door = Item::create([
+        Event::create([
             'step_required' => 1,  //NOW we have access to the door 
             'verb_trigger' => 'USE',
             'item_id' => $mansion_door->id,          
@@ -189,7 +189,7 @@ class Chapter1Seeder extends Seeder
 
         // ITEM IO ------------- event chapter 5?!
         $seed = Item::create([
-            'css_id' => 'grease_pot',
+            'css_id' => 'seed',
             'image_url' => null,
             'description' => "I can't carry that!",
             'is_portable' => false, 
