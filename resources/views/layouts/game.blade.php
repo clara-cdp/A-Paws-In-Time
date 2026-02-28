@@ -14,28 +14,32 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
-<body class=" bg-red-400">
+<body class=" bg-red-400 h-full">
 
     <main class="flex flex-col h-screen w-full">
         <div class="h-[70%] w-full bg-blue-300 flex justify-center text-white text-2xl font-bold">
             <livewire:playroom>
         </div>
 
-        {{-- {{ $slot }} --}}
+
         <div class="h-[30%] w-full flex">
             <div class="flex-1 bg-blue-500 border-r flex items-center justify-center text-white font-semibold">
                 <livewire:game-menu>
                     {{-- TODO: add "back to menu --}}
             </div>
 
-            <div class="flex-1 bg-blue-600 flex items-center justify-center text-white font-semibold">
+            <div class="flex-1 bg-black flex ">
                 <livewire:pocket>
             </div>
 
+        </div>
     </main>
+
 
 </body>
 
 </html>
+{{-- {{ $slot }} --}}
