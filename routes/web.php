@@ -13,3 +13,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+Route::get('/game',function(){
+    return view('layouts.game');
+})->name('game');
