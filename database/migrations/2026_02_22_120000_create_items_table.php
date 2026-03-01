@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('is_visible')->default(true);   // true = visible, false = hidden
 
             // Foreign Keys
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->nullable()->constrained();
             $table->foreignId('event_id')->nullable()->constrained();
 
             //css
