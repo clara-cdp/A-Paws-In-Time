@@ -1,45 +1,37 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
 </head>
 
-<body class=" bg-red-400 h-full">
+<body class="bg-black h-full overflow-hidden">
 
-    <main class="flex flex-col h-screen w-full">
-        <div class="h-[70%] w-full bg-blue-300 flex justify-center text-white text-2xl font-bold">
-            <livewire:playroom>
+    <main x-data="{ view: 'menu' }" class="flex flex-col h-screen w-full">
+        <div class="h-[80%] md:h-[80%] w-full bg-blue-300 flex justify-center text-white text-2xl font-bold ">
+            <livewire:playroom />
         </div>
 
-
-        <div class="h-[30%] w-full flex">
-            <div class="flex-1 bg-blue-500 border-r flex items-center justify-center text-white font-semibold">
-                <livewire:game-menu>
-                    {{-- TODO: add "back to menu --}}
+        <div class="h-[30%] md:h-[20%] w-full flex flex-row bg-black overflow-hidden pt-2 p-4">
+            <div class="w-1/4 md:w-1/4 min-w-[100px]">
+                <livewire:game-menu />
             </div>
 
-            <div class="flex-1 bg-black flex ">
-                <livewire:pocket>
+            <div class="flex-1 min-h-0">
+                <livewire:pocket />
             </div>
-
         </div>
     </main>
-
 
 </body>
 
 </html>
-{{-- {{ $slot }} --}}
+
+{{-- TODO:
+ add "back to menu"
+ add "music ON/OFF "
+       --}}
