@@ -12,7 +12,7 @@
 <body class="bg-black h-full overflow-hidden">
 
     <main x-data="{ view: 'menu' }" class="flex flex-col h-screen w-full">
-        <div class="h-[80%] md:h-[80%] w-full bg-blue-300 flex justify-center text-white text-2xl font-bold ">
+        <div class="h-[80%] md:h-[80%] w-full flex justify-center text-white text-2xl font-bold ">
             <livewire:playroom />
         </div>
 

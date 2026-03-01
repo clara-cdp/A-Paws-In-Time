@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name', 45);
             $table->longText('description');
-            $table->string('image_URL', 45)->nullable();
+            $table->string('image_URL', 45);
+            $table->string('room_type')->default('all');
             $table->timestamps();
         });
     }

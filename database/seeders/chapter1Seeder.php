@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Room;
 use App\Models\Item;
 use App\Models\Event;
-
+use App\Enums\RoomType;
 class Chapter1Seeder extends Seeder
 {
     public function run(): void
@@ -26,7 +26,8 @@ class Chapter1Seeder extends Seeder
         $garden = Room::create([
             'name' => 'The Garden',
             'description' => 'A lush garden outside a mysterious mansion.',
-            'image_url' => '/public/build/assets/rooms/garden_1.svg'
+            'image_url' => 'build/assets/rooms/garden_1.svg',
+            'room_type' => RoomType::ALL
         ]);
 
         // ITEM IO tree
@@ -158,9 +159,10 @@ class Chapter1Seeder extends Seeder
 
         // ROOM 2 present library
         $presentLibrary = Room::create([
-            'name' => 'The Garden',
+            'name' => 'present_library',
             'description' => 'a library in the present',
-            'image_url' => 'room_2.svg'
+            'image_url' => 'build/assets/rooms/present_library.svg',
+            'room_type' => RoomType::HORIZONTAL
         ]);
 
         // EVENT -> open door
