@@ -27,4 +27,9 @@ class Item extends Model
     {
         return self::where('css_id', 'fish')->firstOrFail();
     }
+
+    public function pockets()
+    {
+        return $this->belongsToMany(Pocket::class, 'pocket_items');
+    }
 }

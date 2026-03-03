@@ -2,7 +2,7 @@
 
     <div class="flex-none">
         <h2 class="hidden sm:block font-bold text-yellow-200 uppercase text-base md:text-lg  md:tracking-widest">
-            {{ $player }}'s pocket
+            {{ $playerName }}'s pocket
         </h2>
     </div>
     <div class="flex-1 min-h-0 overflow-y-auto pr-2 custom-scrollbar">
