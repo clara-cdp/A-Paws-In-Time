@@ -13,6 +13,11 @@ class room extends Model
     protected $casts = [
         'room_type' => RoomType::class,
     ];
+
+    public static function startingRoom()
+{
+    return self::where('name', 'The Garden')->firstOrFail();
+}
     
     /** @use HasFactory<\Database\Factories\RoomFactory> */
     use HasFactory;

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class item extends Model
+class Item extends Model
 {
     protected $fillable = [
     'name', 
@@ -19,6 +19,12 @@ class item extends Model
     'css_id',
     'pos_x',
     'pos_y'];
+
     /** @use HasFactory<\Database\Factories\ObjectFactory> */
     use HasFactory;
+
+    public static function starter(): self
+    {
+        return self::where('css_id', 'fish')->firstOrFail();
+    }
 }
