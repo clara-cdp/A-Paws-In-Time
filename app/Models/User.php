@@ -58,4 +58,14 @@ class User extends Authenticatable
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+
+    // add player --------------
+    public function player()
+    {
+        return $this->hasOne(Player::class);
+    }
+
+  
+
+
 }

@@ -17,7 +17,6 @@ return new class extends Migration
         
             //link to rooms and pocket
             $table->foreignId('room_id')->constrained();
-            $table->foreignId('pocket_id')->constrained();
 
             //link to user
             $table->integer('story_step')->default(0); // tracks point in the story
