@@ -7,10 +7,10 @@ use Livewire\Component;
 class GameMenu extends Component
 {
     
-    public $activeVerb = "lOOK AT"; //by default
+    public $activeVerb = ""; 
    
     public function setActiveVerb($verb){
-        $this->reset('activeVerb');
+        
         $this->activeVerb = $verb;
     }
 

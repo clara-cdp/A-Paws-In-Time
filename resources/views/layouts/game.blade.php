@@ -18,7 +18,7 @@
 
         <div class="h-[30%] md:h-[20%] w-full flex flex-row bg-black overflow-hidden pt-2 p-4">
             <div class="w-1/4 md:w-1/4 min-w-[100px]">
-                <livewire:game-menu />
+                <<livewire:game-menu wire:key="game-menu" />
             </div>
 
             <div class="flex-1 min-h-0">

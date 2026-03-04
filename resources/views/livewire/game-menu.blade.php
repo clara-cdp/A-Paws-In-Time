@@ -3,6 +3,8 @@
         <h2 class="hidden sm:block font-bold pb-4 text-yellow-200 uppercase text-base md:text-lg  md:tracking-widest">
             Commands
         </h2>
+        <div class="text-white">you choose {{ $activeVerb }} </div>
+
     </div>
 
     <div class="flex-1 min-h-0 overflow-y-auto ">
@@ -11,8 +13,8 @@
 
             @foreach ($verbs as $verb)
                 <button type="submit" wire:click.prevent="setActiveVerb('{{ $verb }}')"
-                    class="flex items-center justify-start text-white font-bold text-sm md:text-lg md:columns-1 tracking-wide 
-                    {{ $activeVerb === $verb ? 'text-blue-400' : 'text-white hover:text-yellow-200' }}">
+                    class="flex items-center justify-start font-bold text-sm md:text-lg md:columns-1 tracking-wide 
+                {{ $activeVerb === $verb ? 'text-blue-400' : 'text-white hover:text-yellow-200' }}">
                     {{ $verb }}
                 </button>
             @endforeach
