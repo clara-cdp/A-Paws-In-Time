@@ -3,13 +3,18 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;
+
+use App\Game\GameState;
+use App\Game\GameAction;
+
 use Livewire\Component;
-use App\Models\item;
+use App\Models\Item;
 use App\Models\Player;
 use App\Models\User;
 
 class Pocket extends Component
 {
+ 
     public $playerName = '';
 
     public function mount()
@@ -18,6 +23,22 @@ class Pocket extends Component
         $this->playerName = $player->character_name ?? 'Guest';
     }
 
+    public function selectItem(int $itemId){
+        GameState::fromSession()->setItem($itemId);
+        app(GameAction::class)->tryEvent();
+    }
+
+    public function clickItem(int $id)
+    {
+        GameState::fromSession()->setTargetItemId($id);
+
+        $message = app(GameAction::class)->tryEvent();
+
+        if ($message) {
+            $this->dispatch('show-dialog', text: $message);
+        }
+    }
+    
     public function render()
     {
         $player = Auth::user()->player;

@@ -22,7 +22,7 @@ class GameMenu extends Component
 
         if ($verbEnum) {
             $this->activeVerb = $verbEnum->value;
-            GameState::fromSession()->setVerb($verbEnum->value);
+            GameState::fromSession()->setVerb($verbEnum);
         }
     }
 

@@ -9,13 +9,12 @@
 
     <div class="flex-1 min-h-0 overflow-y-auto ">
         <div class="flex flex-col justify-between h-full md:grid md:grid-cols-2 md:gap-x-2 md:justify-start">
-            <?php $verbs = ['LOOK AT', 'USE', 'PICK UP', 'GIVE', 'OPEN', 'CLOSE', 'PULL', 'PUSH']; ?>
 
-            @foreach ($verbs as $verb)
-                <button type="submit" wire:click.prevent="setActiveVerb('{{ $verb }}')"
+            @foreach ($verbs as $verbEnum)
+                <button type="button" wire:click.prevent="setActiveVerb('{{ $verbEnum->value }}')"
                     class="flex items-center justify-start font-bold text-sm md:text-lg md:columns-1 tracking-wide 
-                {{ $activeVerb === $verb ? 'text-blue-400' : 'text-white hover:text-yellow-200' }}">
-                    {{ $verb }}
+                {{ $activeVerb === $verbEnum->value ? 'text-blue-400' : 'text-white hover:text-yellow-200' }}">
+                    {{ $verbEnum->value }}
                 </button>
             @endforeach
 
