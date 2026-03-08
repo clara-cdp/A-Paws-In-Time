@@ -55,16 +55,40 @@ class GameEngine {
             return "That doesn't seem to do anything.";
         }
 
+        // check for required events
+        if ($player->story_step < $event->step_required) {
+            return "I can't do that yet.";
+        }
+
+        if ($event->next_step > $event->step_required && $player->story_step >= $event->next_step) {
+            return "I've already done that.";
+        }
+
+        $newRoomId = null; // 
+        if ($event->target_room_id) {
+            $player->update(['room_id' => $event->target_room_id]);
+            $messages[] = "You step through the doorway.";
+
+            $newRoomId = $event->target_room_id; 
+        }
+
+        // record events
+        $player->logEntries()->firstOrCreate([
+            'event_id' => $event->id
+        ]);
+
+        if ($event->next_step > 0 && $event->next_step > $player->story_step) {
+            $player->update(['story_step' => $event->next_step]);
+            $messages[] = "You've made progress..."; 
+        }
+
+        //----------------
+
         $messages = [];
 
         if ($event->unlocked_item_id) {
             Item::where('id', $event->unlocked_item_id)->update(['is_visible' => true]);
             $messages[] = "Something was revealed!";
-        }
-
-        if ($event->next_step !== null) {
-            $player->update(['current_step' => $event->next_step]);
-            $messages[] = "You've made progress...";
         }
 
         return !empty($messages) ? implode(' ', $messages) : "You did something!";

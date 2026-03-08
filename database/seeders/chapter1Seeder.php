@@ -175,11 +175,40 @@ class Chapter1Seeder extends Seeder
             'verb_trigger' => 'USE',
             'item_id' => $mansion_door->id,
             'required_item_id' => $key->id,
-            'target_room_id' => 2,
+            'target_room_id' => null,
             'next_step' => 2   // access to the present library         
         ]);
 
 
+        // EVENT -> walk through door (Any time after unlocking)
+        Event::create([
+            'step_required' => 2,  
+            'verb_trigger' => 'GO TO', 
+            'item_id' => $mansion_door->id,
+            'required_item_id' => null, // No key needed anymore!
+            'target_room_id' => 2,
+            'next_step' => 0
+        ]);
+
+        // ITEM IO door
+        $garden_door = Item::create([
+            'css_id' => 'garden_door',
+            'image_url' => null,
+            'description' => 'Garden looks pretty from here',
+            'is_portable' => false,
+            'is_visible' => true,
+            'room_id' => $presentLibrary->id
+        ]);
+
+        // EVENT -> back to garden anytime
+        Event::create([
+            'step_required' => 2,
+            'verb_trigger' => 'GO TO',
+            'item_id' => $garden_door->id,
+            'required_item_id' => null, 
+            'target_room_id' => 1,
+            'next_step' => 0
+        ]);
         /*----------------------
         ELEMENTS USED IN NEXT CHAPTERS!
         ---------------------------*/

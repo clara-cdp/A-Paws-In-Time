@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Game;
+
 use App\Enums\Verb;
 class GameState {
     public string|null $verb = null;

@@ -7,7 +7,7 @@ enum Verb: string
     case LOOK_AT = 'LOOK AT';
     case USE = 'USE';
     case PICK_UP = 'PICK UP';
-    case GIVE = 'GIVE';
+    case GO_TO = 'GO TO';
     case OPEN = 'OPEN';
     case CLOSE = 'CLOSE';
     case PULL = 'PULL';

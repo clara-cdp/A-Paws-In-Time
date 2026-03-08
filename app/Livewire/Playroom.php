@@ -8,9 +8,13 @@ use App\Game\GameAction;
 use App\Models\event;
 use App\Models\Item;
 use App\Models\Room;
+use App\Models\Player;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
 
 class Playroom extends Component
 {
@@ -52,7 +56,10 @@ class Playroom extends Component
 
     public function render()
     {
-        $room = Room::findOrFail(1);
+        $player = Auth::user()->Player;
+        $roomId = $player->room_id ?? 1;
+        $room = Room::findOrFail($roomId);
+
         $items = Item::where('room_id', $room->id)->get();
         $removedItems = Item::whereNull('room_id')->pluck('css_id');
 
@@ -65,4 +72,5 @@ class Playroom extends Component
 
         ]);
     }
+ 
 }

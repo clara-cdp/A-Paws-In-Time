@@ -26,6 +26,10 @@ class GameAction
         $displayMessage = app(GameEngine::class)->resolve($state);
         Log::info('Engine returned message: ' . $displayMessage);
 
+        if (!empty($result['new_room_id'])) {
+            Log::info('Player moved to room ID: ' . $result['new_room_id']);
+        }
+
         $state->reset();
 
         return $displayMessage;
