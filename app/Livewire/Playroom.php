@@ -54,18 +54,15 @@ class Playroom extends Component
     {
         $room = Room::findOrFail(1);
         $items = Item::where('room_id', $room->id)->get();
+        $removedItems = Item::whereNull('room_id')->pluck('css_id');
 
-        $this->dispatch('room-items-loaded', items: $items);
+        $this->dispatch('room-items-loaded', items: $items, removedItems: $removedItems);
 
         return view('livewire.playroom', [
             'room'     => $room,
-            'roomType' => $room->room_type->value, 
+            'roomType' => $room->room_type->value,
             'items' => $items
-           
+
         ]);
     }
-
-   
 }
-
-

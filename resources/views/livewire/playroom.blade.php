@@ -150,86 +150,100 @@
 
     {{-- * * * object visibility & dialog script * * * --}}
     @script
-        <script>
-            // --- dialog box ------------------------------------------------------------------
-            Livewire.on('show-dialog', (data) => {
-                const text = Array.isArray(data) ? data[0]?.text : (data.text || data);
-                if (!text) return;
+    <script>
+        // --- dialog box ------------------------------------------------------------------
+        Livewire.on('show-dialog', (data) => {
+            const text = Array.isArray(data) ? data[0]?.text : (data.text || data);
+            if (!text) return;
 
-                const dialog = document.getElementById('game-dialog');
-                const dialogText = document.getElementById('game-dialog-text');
+            const dialog = document.getElementById('game-dialog');
+            const dialogText = document.getElementById('game-dialog-text');
 
-                dialogText.innerText = text;
-                dialog.classList.remove('hidden');
-                setTimeout(() => dialog.classList.remove('opacity-0'), 10);
+            dialogText.innerText = text;
+            dialog.classList.remove('hidden');
+            setTimeout(() => dialog.classList.remove('opacity-0'), 10);
 
-                setTimeout(() => {
-                    dialog.classList.add('opacity-0');
-                    setTimeout(() => dialog.classList.add('hidden'), 300);
-                }, 2000);
-            });
+            setTimeout(() => {
+                dialog.classList.add('opacity-0');
+                setTimeout(() => dialog.classList.add('hidden'), 300);
+            }, 2000);
+        });
 
-            // --- room items -----------------------------------------------------------------------
-            Livewire.on('room-items-loaded', (data) => {
-                const items = Array.isArray(data) ? data[0]?.items : (data.items || data);
-                if (!items) return;
+        // --- room items -----------------------------------------------------------------------
+        Livewire.on('room-items-loaded', ({
+            items,
+            removedItems = []
+        }) => {
+            if (!items) return;
 
-                const validItemIds = items.map(item => item.css_id);
-
-                document.querySelectorAll('[data-livewire-initialized="true"]').forEach(el => {
-                    if (!validItemIds.includes(el.id)) {
-                        el.style.opacity = '0';
-                        el.style.pointerEvents = 'none';
-                    }
-                });
-
-                items.forEach(item => {
-                    let svgElement = document.getElementById(item.css_id);
-                    if (!svgElement) return;
-
-                    if (!item.is_visible) {
-                        svgElement.style.opacity = '0';
-                        svgElement.style.pointerEvents = 'none';
-                    } else {
-                        svgElement.style.opacity = '1';
-                        svgElement.style.pointerEvents = '';
-                    }
-
-                    if (svgElement.dataset.livewireInitialized) return;
-                    svgElement.dataset.livewireInitialized = "true";
-                    svgElement.style.cursor = "pointer";
-
-                    svgElement.onpointerdown = (e) => e.stopPropagation();
-
-                    svgElement.onclick = (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        $wire.dispatch("roomItemClicked", {
-                            css_id: item.css_id
-                        });
-                    };
-                });
-            });
-
-            // ----- display / hide items ------------------------------------------------------
-            Livewire.on('show-item', (data) => {
-                const css_id = Array.isArray(data) ? data[0]?.css_id : data.css_id;
-                let el = document.getElementById(css_id);
-                if (el) {
-                    el.style.opacity = '1';
-                    el.style.pointerEvents = '';
-                }
-            });
-
-            Livewire.on('hide-item', (data) => {
-                const css_id = Array.isArray(data) ? data[0]?.css_id : data.css_id;
-                let el = document.getElementById(css_id);
+            // Hide any items that no longer belong to a room (e.g. picked up)
+            removedItems.forEach(css => {
+                const cssId = typeof css === 'string' ? css : css?.css_id;
+                if (!cssId) return;
+                const el = document.getElementById(cssId);
                 if (el) {
                     el.style.opacity = '0';
                     el.style.pointerEvents = 'none';
                 }
             });
-        </script>
+
+            const validItemIds = items.map(item => item.css_id);
+
+            // For already-initialized elements, hide ones that are no longer valid
+            document.querySelectorAll('[data-livewire-initialized="true"]').forEach(el => {
+                if (!validItemIds.includes(el.id)) {
+                    el.style.opacity = '0';
+                    el.style.pointerEvents = 'none';
+                }
+            });
+
+            items.forEach(item => {
+                let svgElement = document.getElementById(item.css_id);
+                if (!svgElement) return;
+
+                if (!item.is_visible) {
+                    svgElement.style.opacity = '0';
+                    svgElement.style.pointerEvents = 'none';
+                } else {
+                    svgElement.style.opacity = '1';
+                    svgElement.style.pointerEvents = '';
+                }
+
+                if (svgElement.dataset.livewireInitialized) return;
+                svgElement.dataset.livewireInitialized = "true";
+                svgElement.style.cursor = "pointer";
+
+                svgElement.onpointerdown = (e) => e.stopPropagation();
+
+                svgElement.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $wire.dispatch("roomItemClicked", {
+                        css_id: item.css_id
+                    });
+                };
+            });
+        });
+
+        // ----- display / hide items ------------------------------------------------------
+        Livewire.on('show-item', (data) => {
+            const css_id = Array.isArray(data) ? data[0]?.css_id : data.css_id;
+            let el = document.getElementById(css_id);
+            if (el) {
+                el.style.opacity = '1';
+                el.style.pointerEvents = '';
+            }
+        });
+
+        Livewire.on('hide-item', (data) => {
+            const css_id = Array.isArray(data) ? data[0]?.css_id : data.css_id;
+            let el = document.getElementById(css_id);
+            if (el) {
+                el.style.opacity = '0';
+                el.style.pointerEvents = 'none';
+            }
+        });
+    </script>
     @endscript
 
 </div>

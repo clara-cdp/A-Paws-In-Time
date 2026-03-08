@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\Item;
 use App\Models\Event;
 use App\Enums\RoomType;
+
 class Chapter1Seeder extends Seeder
 {
     public function run(): void
@@ -133,29 +134,32 @@ class Chapter1Seeder extends Seeder
             'room_id' => $garden->id
         ]);
 
-        // EVENT -> Distract Dog
-        Event::create([
-            // step_required is 0 by default
-            'verb_trigger' => 'USE',
-            'item_id' => $dog->id,           // The Dog is the target
-            'required_item_id' => $ball->id, // The Ball is the tool from the pocket
-            'target_room_id' => null,        // We aren't moving rooms yet, just clearing the path
-            'next_step' => 1            // This completes Step 0!
-        ]);
-
-
-        // ---------------- unlocking  CHAPTER 2 ---------------------------//
-        //------- opening mansion's door with a key
-
         // ITEM IO door
         $mansion_door = Item::create([
             'css_id' => 'mansion_entrance',
             'image_url' => null,
             'description' => 'It is looked...',
             'is_portable' => false,
-            'is_visible' => true,
+            'is_visible' => false,
             'room_id' => $garden->id
         ]);
+
+
+        // EVENT -> Distract Dog
+        Event::create([
+            'verb_trigger'     => 'USE',           // using the USE verb
+            'item_id'          => $dog->id,        // click on the dog in the room
+            'required_item_id' => $ball->id,       // with tennis ball selected from pocket
+            'unlocked_item_id' => $mansion_door->id, // this door will become visible
+            'target_room_id'   => null,           // stay in same room
+            'next_step'        => 1,
+        ]);
+
+
+        // ---------------- unlocking  CHAPTER 2 ---------------------------//
+        //------- opening mansion's door with a key
+
+
 
         // ROOM 2 present library
         $presentLibrary = Room::create([
