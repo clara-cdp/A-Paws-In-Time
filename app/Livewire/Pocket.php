@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Game\GameState;
 use App\Game\GameAction;
+use App\Enums\Verb;
 
 use App\Livewire\Playroom;
 use Livewire\Component;
@@ -18,7 +19,7 @@ use Livewire\Attributes\On;
 
 class Pocket extends Component
 {
- 
+
     public $playerName = '';
 
     public function mount()
@@ -28,32 +29,26 @@ class Pocket extends Component
     }
 
     #[On('pocket-update')]
-    public function updatePocket()
+    public function updatePocket() {}
+
+    public function selectItem(int $itemId)
     {
-    }
+        $state = GameState::fromSession();
+        $state->setItem($itemId);
 
-    public function selectItem(int $itemId){
+        $verb = $state->getVerb();
 
-        GameState::fromSession()->setItem($itemId);
-        $message = app(GameAction::class)->tryEvent();
+        if ($verb === Verb::LOOK_AT) {
+            $state->setTargetItemId($itemId);
+            $message = app(GameAction::class)->tryEvent();
 
-        if ($message) {
-            $this->dispatch('show-dialog', text: $message);
-            $this->dispatch('inventory-updated'); 
+            if ($message) {
+                $this->dispatch('show-dialog', text: $message);
+               // $this->dispatch('inventory-updated');
+            }
         }
     }
 
-    public function clickItem(int $id)
-    {
-        GameState::fromSession()->setTargetItemId($id);
-        $message = app(GameAction::class)->tryEvent();
-
-        if ($message) {
-            $this->dispatch('show-dialog', text: $message);
-            $this->dispatch('inventory-updated'); 
-        }
-    }
-    
     public function render()
     {
         $player = Auth::user()->player;
@@ -66,6 +61,4 @@ class Pocket extends Component
             'items' => $pocketItems
         ]);
     }
-    }
-
-
+}

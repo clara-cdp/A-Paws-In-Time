@@ -40,9 +40,9 @@ class GameEngine {
                 return "I can't pick that up.";
             }
         }
-
-        return $this->processEvent($verb, $targetItem, $pocketItem, $player);
-    }
+           return $this->processEvent($verb, $targetItem, $pocketItem, $player);           
+        }
+    
 
     private function processEvent(Verb $verb, Item $targetItem, ?Item $pocketItem, $player): ?string
     {

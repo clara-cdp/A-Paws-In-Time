@@ -10,7 +10,7 @@
         <div class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3">
 
             @foreach ($items as $item)
-                <button wire:click="clickItem({{ $item->id }})"
+                <button wire:click="selectItem({{ $item->id }})"
                     class="aspect-square max-w-[120px] max-h-[120px] w-full flex flex-col items-center justify-center hover:cursor-pointer group">
                     <img src="{{ asset($item->image_url) }}" alt="{{ $item->css_id }}"
                         class="max-w-[80%] max-h-[80%] object-contain transition-transform group-hover:scale-105">

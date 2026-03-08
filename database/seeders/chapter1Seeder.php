@@ -106,7 +106,7 @@ class Chapter1Seeder extends Seeder
         //ITEM PO Silver Key
         $key = Item::create([
             'css_id' => 'Key',
-            'image_url' => '/public/build/assets/items/key.png',
+            'image_url' => 'build/assets/items/key.png',
             'description' => 'shinny!',
             'is_portable' => true,
             'is_visible' => false, // Hidden until statue is pushed
@@ -151,7 +151,7 @@ class Chapter1Seeder extends Seeder
             'item_id'          => $dog->id,        // click on the dog in the room
             'required_item_id' => $ball->id,       // with tennis ball selected from pocket
             'unlocked_item_id' => $mansion_door->id, // this door will become visible
-            'target_room_id'   => null,           // stay in same room
+            'target_room_id'   => null,             // stay in same room
             'next_step'        => 1,
         ]);
 
@@ -165,7 +165,7 @@ class Chapter1Seeder extends Seeder
         $presentLibrary = Room::create([
             'name' => 'present_library',
             'description' => 'a library in the present',
-            'image_url' => 'build/assets/rooms/present_library.svg',
+            'image_url' => 'build/assets/rooms/PL1.svg',
             'room_type' => RoomType::HORIZONTAL
         ]);
 
@@ -175,7 +175,7 @@ class Chapter1Seeder extends Seeder
             'verb_trigger' => 'USE',
             'item_id' => $mansion_door->id,
             'required_item_id' => $key->id,
-            'target_room_id' => null,
+            'target_room_id' => 2,
             'next_step' => 2   // access to the present library         
         ]);
 
@@ -187,7 +187,7 @@ class Chapter1Seeder extends Seeder
         // PO cuckoo bird ------------- event chapter 2!
         $cuckoo = Item::create([
             'css_id' => 'cuckoo',
-            'image_url' => '/public/build/assets/items/cuckoo',
+            'image_url' => 'build/assets/items/cuckoo',
             'description' => "chip and chirp!",
             'is_portable' => true,
             'is_visible' => true,
