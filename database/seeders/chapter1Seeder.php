@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\Item;
 use App\Models\Event;
 use App\Enums\RoomType;
+use App\Models\Player;
 
 class Chapter1Seeder extends Seeder
 {

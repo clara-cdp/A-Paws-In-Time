@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->longText('description');
-            $table->string('image_url', 45)->nullable();
+            $table->string('image_url', 150)->nullable();
             
             $table->boolean('is_portable')->default(false); // true = PO, false = IO
             $table->boolean('is_visible')->default(true);   // true = visible, false = hidden
@@ -22,9 +22,10 @@ return new class extends Migration
             // Foreign Keys
             $table->foreignId('room_id')->nullable()->constrained();
             $table->foreignId('event_id')->nullable()->constrained();
+            $table->foreignId('player_id')->nullable()->constrained()->cascadeOnDelete();
 
             //css
-            $table->string('css_id', 45)->unique();
+            $table->string('css_id', 45);
         
             $table->timestamps();
         });
