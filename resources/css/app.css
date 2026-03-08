@@ -15,3 +15,19 @@
     background: #4b5563;
     border-radius: 10px;
 }
+
+/*********** item styles*/
+.no-drag {
+    pointer-events: auto;
+    touch-action: manipulation;
+}
+
+svg [id] {
+    transition: filter 0.15s;
+
+}
+
+svg [id]:hover {
+    filter: brightness(1.25);
+
+}

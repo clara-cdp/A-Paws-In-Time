@@ -28,7 +28,6 @@ class StartGame
                 'player_id' => $player->id,
             ]);
 
-           
             $this->giveStarterItem($pocket);
 
             return $player;

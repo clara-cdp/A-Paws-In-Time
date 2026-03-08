@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class player extends Model
+class Player extends Model
 {
-//protected $fillable = ['character_name','room_id','pocket_id'];
-
     protected $fillable = [
         'user_id',
         'character_name',
         'room_id',
         'story_step',
     ];
-
-    /** @use HasFactory<\Database\Factories\PlayerFactory> */
-    use HasFactory;
 
     public function user()
     {
@@ -28,4 +23,12 @@ class player extends Model
     {
         return $this->hasOne(Pocket::class);
     }
+
+    public function logEntries()
+    {
+        return $this->hasMany(Log_entry::class);
+    }
+
+    /** @use HasFactory<\Database\Factories\PlayerFactory> */
+    use HasFactory;
 }

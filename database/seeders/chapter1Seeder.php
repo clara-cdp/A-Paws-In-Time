@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\Item;
 use App\Models\Event;
 use App\Enums\RoomType;
+
 class Chapter1Seeder extends Seeder
 {
     public function run(): void
@@ -43,7 +44,7 @@ class Chapter1Seeder extends Seeder
         //ITEM PO ball
         $ball = Item::create([
             'css_id' => 'tennis_ball',
-            'image_url' => '/public/build/assets/items/tennisBall.png',
+            'image_url' => 'build/assets/items/tennisBall.png',
             'description' => 'You only live once, but you get to serve twice',
             'is_portable' => true,
             'is_visible' => false, // Hidden until tree is pushed
@@ -73,7 +74,7 @@ class Chapter1Seeder extends Seeder
         //ITEM PO Crowbar
         $crowbar = Item::create([
             'css_id' => 'Crowbar',
-            'image_url' => '/public/build/assets/items/toolbox.png',
+            'image_url' => 'build/assets/items/toolbox.png',
             'description' => 'So American!',
             'is_portable' => true,
             'is_visible' => false,
@@ -105,7 +106,7 @@ class Chapter1Seeder extends Seeder
         //ITEM PO Silver Key
         $key = Item::create([
             'css_id' => 'Key',
-            'image_url' => '/public/build/assets/items/key.png',
+            'image_url' => 'build/assets/items/key.png',
             'description' => 'shinny!',
             'is_portable' => true,
             'is_visible' => false, // Hidden until statue is pushed
@@ -133,35 +134,38 @@ class Chapter1Seeder extends Seeder
             'room_id' => $garden->id
         ]);
 
-        // EVENT -> Distract Dog
-        Event::create([
-            // step_required is 0 by default
-            'verb_trigger' => 'USE',
-            'item_id' => $dog->id,           // The Dog is the target
-            'required_item_id' => $ball->id, // The Ball is the tool from the pocket
-            'target_room_id' => null,        // We aren't moving rooms yet, just clearing the path
-            'next_step' => 1            // This completes Step 0!
-        ]);
-
-
-        // ---------------- unlocking  CHAPTER 2 ---------------------------//
-        //------- opening mansion's door with a key
-
         // ITEM IO door
         $mansion_door = Item::create([
             'css_id' => 'mansion_entrance',
             'image_url' => null,
             'description' => 'It is looked...',
             'is_portable' => false,
-            'is_visible' => true,
+            'is_visible' => false,
             'room_id' => $garden->id
         ]);
+
+
+        // EVENT -> Distract Dog
+        Event::create([
+            'verb_trigger'     => 'USE',           // using the USE verb
+            'item_id'          => $dog->id,        // click on the dog in the room
+            'required_item_id' => $ball->id,       // with tennis ball selected from pocket
+            'unlocked_item_id' => $mansion_door->id, // this door will become visible
+            'target_room_id'   => null,             // stay in same room
+            'next_step'        => 1,
+        ]);
+
+
+        // ---------------- unlocking  CHAPTER 2 ---------------------------//
+        //------- opening mansion's door with a key
+
+
 
         // ROOM 2 present library
         $presentLibrary = Room::create([
             'name' => 'present_library',
             'description' => 'a library in the present',
-            'image_url' => 'build/assets/rooms/present_library.svg',
+            'image_url' => 'build/assets/rooms/PL1.svg',
             'room_type' => RoomType::HORIZONTAL
         ]);
 
@@ -176,6 +180,35 @@ class Chapter1Seeder extends Seeder
         ]);
 
 
+        // EVENT -> walk through door (Any time after unlocking)
+        Event::create([
+            'step_required' => 2,  
+            'verb_trigger' => 'GO TO', 
+            'item_id' => $mansion_door->id,
+            'required_item_id' => null, // No key needed anymore!
+            'target_room_id' => 2,
+            'next_step' => 0
+        ]);
+
+        // ITEM IO door
+        $garden_door = Item::create([
+            'css_id' => 'garden_door',
+            'image_url' => null,
+            'description' => 'Garden looks pretty from here',
+            'is_portable' => false,
+            'is_visible' => true,
+            'room_id' => $presentLibrary->id
+        ]);
+
+        // EVENT -> back to garden anytime
+        Event::create([
+            'step_required' => 2,
+            'verb_trigger' => 'GO TO',
+            'item_id' => $garden_door->id,
+            'required_item_id' => null, 
+            'target_room_id' => 1,
+            'next_step' => 0
+        ]);
         /*----------------------
         ELEMENTS USED IN NEXT CHAPTERS!
         ---------------------------*/
@@ -183,7 +216,7 @@ class Chapter1Seeder extends Seeder
         // PO cuckoo bird ------------- event chapter 2!
         $cuckoo = Item::create([
             'css_id' => 'cuckoo',
-            'image_url' => '/public/build/assets/items/cuckoo',
+            'image_url' => 'build/assets/items/cuckoo',
             'description' => "chip and chirp!",
             'is_portable' => true,
             'is_visible' => true,
