@@ -30,8 +30,18 @@ class Playroom extends Component
 
     public function clickItem(int $id)
     {
+        $player = Auth::user()->Player;
+        $startingRoomId = $player->room_id;
+
         GameState::fromSession()->setTargetItemId($id);
         $message = app(GameAction::class)->tryEvent();
+
+        $player->refresh();
+
+        if ($startingRoomId !== $player->room_id) {
+            $this->js('window.location.reload();');
+            return; 
+        }
 
         if ($message) {
             $this->dispatch('show-dialog', text: $message);
