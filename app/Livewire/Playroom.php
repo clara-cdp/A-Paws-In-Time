@@ -27,11 +27,26 @@ class Playroom extends Component
     public function clickItem(int $id)
     {
         GameState::fromSession()->setTargetItemId($id);
-
         $message = app(GameAction::class)->tryEvent();
 
         if ($message) {
             $this->dispatch('show-dialog', text: $message);
+
+            $this->dispatch('pocket-update');
+
+            $clickedItem = \App\Models\Item::find($id);
+
+            // TODO: move this
+            if ($clickedItem->room_id === null) {
+                // room_id = null -> Hidden
+                $this->dispatch('hide-item', css_id: $clickedItem->css_id);
+            } elseif ($clickedItem->is_visible) {
+                // room_id = int & is_visible = true -> dsiplay
+                $this->dispatch('show-item', css_id: $clickedItem->css_id);
+            } else {
+                // room_id = int & is_visible = false -> hidden
+                $this->dispatch('hide-item', css_id: $clickedItem->css_id);
+            }
         }
     }
 
@@ -50,6 +65,7 @@ class Playroom extends Component
         ]);
     }
 
+   
 }
 
 

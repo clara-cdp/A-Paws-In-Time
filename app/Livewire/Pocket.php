@@ -7,10 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Game\GameState;
 use App\Game\GameAction;
 
+use App\Livewire\Playroom;
 use Livewire\Component;
+
 use App\Models\Item;
 use App\Models\Player;
 use App\Models\User;
+
+use Livewire\Attributes\On;
 
 class Pocket extends Component
 {
@@ -23,19 +27,30 @@ class Pocket extends Component
         $this->playerName = $player->character_name ?? 'Guest';
     }
 
+    #[On('pocket-update')]
+    public function updatePocket()
+    {
+    }
+
     public function selectItem(int $itemId){
+
         GameState::fromSession()->setItem($itemId);
-        app(GameAction::class)->tryEvent();
+        $message = app(GameAction::class)->tryEvent();
+
+        if ($message) {
+            $this->dispatch('show-dialog', text: $message);
+            $this->dispatch('inventory-updated'); 
+        }
     }
 
     public function clickItem(int $id)
     {
         GameState::fromSession()->setTargetItemId($id);
-
         $message = app(GameAction::class)->tryEvent();
 
         if ($message) {
             $this->dispatch('show-dialog', text: $message);
+            $this->dispatch('inventory-updated'); 
         }
     }
     

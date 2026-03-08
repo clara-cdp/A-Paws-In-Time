@@ -43,7 +43,7 @@ class Chapter1Seeder extends Seeder
         //ITEM PO ball
         $ball = Item::create([
             'css_id' => 'tennis_ball',
-            'image_url' => '/public/build/assets/items/tennisBall.png',
+            'image_url' => 'build/assets/items/tennisBall.png',
             'description' => 'You only live once, but you get to serve twice',
             'is_portable' => true,
             'is_visible' => false, // Hidden until tree is pushed
@@ -73,7 +73,7 @@ class Chapter1Seeder extends Seeder
         //ITEM PO Crowbar
         $crowbar = Item::create([
             'css_id' => 'Crowbar',
-            'image_url' => '/public/build/assets/items/toolbox.png',
+            'image_url' => 'build/assets/items/toolbox.png',
             'description' => 'So American!',
             'is_portable' => true,
             'is_visible' => false,

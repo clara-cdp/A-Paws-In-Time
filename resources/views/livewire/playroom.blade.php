@@ -1,18 +1,16 @@
 <div class="relative h-full w-full overflow-hidden bg-black" x-data="roomMap('{{ $roomType }}')" x-init="init()">
     <div class="absolute top-4 left-4 z-50 pointer-events-none ">
         <h1>{{ $room->name }}</h1>
-        {{-- RETRO DIALOG BOX UI (Vanilla HTML) --}}
-        <div id="game-dialog"
-            class="absolute top-16 left-1/2 -translate-x-1/2 z-[9999] w-3/4 max-w-lg pointer-events-none transition-opacity duration-300 opacity-0 hidden">
-            <div
-                class="bg-black/90 border-2 border-yellow-300 text-yellow-200 p-4 text-center font-bold tracking-widest uppercase md:text-xl rounded-lg shadow-[0_0_15px_rgba(253,224,71,0.5)]">
-                <span id="game-dialog-text"></span>
-            </div>
-        </div>
-
     </div>
-
-
+    {{-- dialog --}}
+    <div id="game-dialog"
+        class="absolute top-16 left-4 z-50 w-[90vw] md:w-[600px] pointer-events-none transition-opacity duration-300 opacity-0 hidden">
+        <div
+            class="whitespace-nowrap bg-black/90 border-2 border-yellow-300 text-yellow-200 p-4 text-center font-bold tracking-widest  md:text-base rounded-lg shadow-[0_0_15px_rgba(253,224,71,0.5)]">
+            <span id="game-dialog-text"></span>
+        </div>
+    </div>
+    {{-- room rendering --}}
     <div x-ref="mapContainer" class="absolute left-0 top-0 select-none touch-none" :style="style"
         :class="isDragging ? 'cursor-grabbing' : 'cursor-grab'" @pointerdown="startDrag" @pointermove="onDrag"
         @pointerup="endDrag" @pointercancel="endDrag">
@@ -150,11 +148,10 @@
         }
     </script>
 
-    {{-- * * * object visibility script/css * * * --}}
     {{-- * * * object visibility & dialog script * * * --}}
     @script
         <script>
-            // 1. LISTEN FOR THE DIALOG BOX EVENT
+            // --- dialog box ------------------------------------------------------------------
             Livewire.on('show-dialog', (data) => {
                 const text = Array.isArray(data) ? data[0]?.text : (data.text || data);
                 if (!text) return;
@@ -162,42 +159,48 @@
                 const dialog = document.getElementById('game-dialog');
                 const dialogText = document.getElementById('game-dialog-text');
 
-                // Set the text and fade it in
                 dialogText.innerText = text;
                 dialog.classList.remove('hidden');
                 setTimeout(() => dialog.classList.remove('opacity-0'), 10);
 
-                // Hide it after 3 seconds
                 setTimeout(() => {
                     dialog.classList.add('opacity-0');
                     setTimeout(() => dialog.classList.add('hidden'), 300);
-                }, 3000);
+                }, 2000);
             });
 
-            // 2. LISTEN FOR THE ROOM ITEMS EVENT
+            // --- room items -----------------------------------------------------------------------
             Livewire.on('room-items-loaded', (data) => {
                 const items = Array.isArray(data) ? data[0]?.items : (data.items || data);
                 if (!items) return;
+
+                const validItemIds = items.map(item => item.css_id);
+
+                document.querySelectorAll('[data-livewire-initialized="true"]').forEach(el => {
+                    if (!validItemIds.includes(el.id)) {
+                        el.style.opacity = '0';
+                        el.style.pointerEvents = 'none';
+                    }
+                });
 
                 items.forEach(item => {
                     let svgElement = document.getElementById(item.css_id);
                     if (!svgElement) return;
 
-                    // Hide/Show logic
-                    svgElement.classList.toggle("hidden", !item.is_visible);
+                    if (!item.is_visible) {
+                        svgElement.style.opacity = '0';
+                        svgElement.style.pointerEvents = 'none';
+                    } else {
+                        svgElement.style.opacity = '1';
+                        svgElement.style.pointerEvents = '';
+                    }
 
-                    // Prevent multiple listeners
                     if (svgElement.dataset.livewireInitialized) return;
                     svgElement.dataset.livewireInitialized = "true";
-
                     svgElement.style.cursor = "pointer";
 
-                    // Stop the Alpine map from dragging when clicked 
-                    svgElement.onpointerdown = (e) => {
-                        e.stopPropagation();
-                    };
+                    svgElement.onpointerdown = (e) => e.stopPropagation();
 
-                    // Dispatch click to Playroom.php
                     svgElement.onclick = (e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -206,6 +209,25 @@
                         });
                     };
                 });
+            });
+
+            // ----- display / hide items ------------------------------------------------------
+            Livewire.on('show-item', (data) => {
+                const css_id = Array.isArray(data) ? data[0]?.css_id : data.css_id;
+                let el = document.getElementById(css_id);
+                if (el) {
+                    el.style.opacity = '1';
+                    el.style.pointerEvents = '';
+                }
+            });
+
+            Livewire.on('hide-item', (data) => {
+                const css_id = Array.isArray(data) ? data[0]?.css_id : data.css_id;
+                let el = document.getElementById(css_id);
+                if (el) {
+                    el.style.opacity = '0';
+                    el.style.pointerEvents = 'none';
+                }
             });
         </script>
     @endscript

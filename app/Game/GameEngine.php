@@ -13,8 +13,6 @@ class GameEngine {
 
     public function resolve(GameState $state): ?string{
 
-       
-
         $player = Auth::user()->Player;
         $verb = $state->getVerb();
 
@@ -29,17 +27,18 @@ class GameEngine {
         }
 
         if ($verb === Verb::PICK_UP) {
+
             if ($targetItem->is_portable && $targetItem->is_visible) {
-                $targetItem->update([
-                    'room_id' => null,
-                    'pocket_id' => $player->pocket->id 
-                ]);
+
+                $targetItem->room_id = null;
+                $targetItem->save();
+
+                $player->pocket->items()->syncWithoutDetaching([$targetItem->id]);
 
                 return "Picked up the " . $targetItem->css_id;
             } else {
                 return "I can't pick that up.";
             }
-           
         }
 
         return $this->processEvent($verb, $targetItem, $pocketItem, $player);
@@ -47,15 +46,20 @@ class GameEngine {
 
     private function processEvent(Verb $verb, Item $targetItem, ?Item $pocketItem, $player): ?string
     {
-        $displayMessage = '';
-
-        $event = Event::where('verb_trigger', $verb)
+        $event = Event::where('verb_trigger', $verb->value)
             ->where('item_id', $targetItem->id)
             ->where('required_item_id', $pocketItem?->id)
             ->first();
 
         if (!$event) {
-            $displayMessage ="That doesn't seem to do anything.";
+            return "That doesn't seem to do anything.";
+        }
+
+        $messages = [];
+
+        if ($event->unlocked_item_id) {
+            Item::where('id', $event->unlocked_item_id)->update(['is_visible' => true]);
+            $messages[] = "Something was revealed!";
         }
 
         if ($event->next_step !== null) {
@@ -63,7 +67,7 @@ class GameEngine {
             $messages[] = "You've made progress...";
         }
 
-        return $displayMessage;
+        return !empty($messages) ? implode(' ', $messages) : "You did something!";
     }
-
 }
+
