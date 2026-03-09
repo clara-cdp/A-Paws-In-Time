@@ -15,6 +15,17 @@ class event extends Model
     'unlocked_object_id', 
     'target_room_id', 
     'next_step'];
+
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
+
+    public function requiredItem()
+    {
+        return $this->belongsTo(Item::class, 'required_item_id');
+    }
     /** @use HasFactory<\Database\Factories\EventFactory> */
     use HasFactory;
 }
