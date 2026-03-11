@@ -31,17 +31,23 @@ class StartGame
                 'player_id' => $player->id,
             ]);
 
-            $this->giveStarterItem($pocket);
+            $this->giveStarterItem($pocket, $player);
 
             return $player;
         });
     }
 
-    protected function giveStarterItem(Pocket $pocket): void
+    protected function giveStarterItem(Pocket $pocket, Player $player): void
     {
+        $masterStarter = Item::starter();
+
+        $playerFish = Item::where('player_id', $player->id)
+            ->where('css_id', $masterStarter->css_id)
+            ->firstOrFail();
+
         PocketItem::create([
             'pocket_id' => $pocket->id,
-            'item_id'   => Item::starter()->id
+            'item_id'   => $playerFish->id
         ]);
     }
 

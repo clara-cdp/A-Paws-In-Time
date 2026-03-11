@@ -20,7 +20,7 @@ class NewGameController extends Controller
         if ($request->user()->player) {
             return redirect('/game');
         }
-        
+
         $request->validate([
             'character_name' => 'required|string|max:45',
         ]);
@@ -31,5 +31,14 @@ class NewGameController extends Controller
         );
 
         return redirect('/game');
+    }
+
+    public function destroy(Request $request)
+    {
+        if ($request->user()->player) {
+            $request->user()->player->delete();
+        }
+
+        return redirect()->route('game.new')->with('status', 'Character deleted. Start fresh!');
     }
 }

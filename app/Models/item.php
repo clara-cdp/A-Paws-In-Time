@@ -25,7 +25,10 @@ class Item extends Model
 
     public static function starter(): self
     {
-        return self::where('css_id', 'fish')->firstOrFail();
+        return self::withoutGlobalScopes()
+            ->where('css_id', 'fish')
+            ->whereNull('player_id')
+            ->firstOrFail();
     }
 
     public function pockets()

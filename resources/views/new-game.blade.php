@@ -8,6 +8,17 @@
         <a href="{{ url('/game') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Continue Adventure
         </a>
+        {{-- ----------------------------------------------------------------------------------- --}}
+        <form method="POST" action="{{ route('game.destroy') }}"
+            onsubmit="return confirm('Warning: This will delete your character and all progress. Are you sure?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-red-500 hover:text-red-700 text-sm underline">
+                Reset Character
+            </button>
+        </form>
+
+        {{-- ----------------------------------------------------------------------------------- --}}
     @else
         <form method="POST" action="{{ route('game.store') }}">
             @csrf

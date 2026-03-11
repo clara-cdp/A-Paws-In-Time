@@ -31,6 +31,7 @@ require __DIR__.'/auth.php';
 Route::middleware('auth')->group(function () {
     Route::get('/new-game', [NewGameController::class, 'create'])->name('game.new');
     Route::post('/new-game', [NewGameController::class, 'store'])->name('game.store');
+    Route::delete('/new-game', [NewGameController::class, 'destroy'])->name('game.destroy');
     Route::view('/game', 'layouts.game');
 });
 

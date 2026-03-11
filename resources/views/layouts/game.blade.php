@@ -61,6 +61,5 @@
 </html>
 
 {{-- TODO:
- add "back to menu"
- add "music ON/OFF "
+    -> add "music ON/OFF "
        --}}
