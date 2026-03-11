@@ -17,6 +17,10 @@ class NewGameController extends Controller
 
     public function store(Request $request, StartGame $startGame)
     {
+        if ($request->user()->player) {
+            return redirect('/game');
+        }
+        
         $request->validate([
             'character_name' => 'required|string|max:45',
         ]);
