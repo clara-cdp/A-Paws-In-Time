@@ -24,12 +24,12 @@
             <div class="space-y-4">
                 <a href="{{ auth()->check() ? route('game.new') : route('register') }}"
                     class="block px-8 py-4 bg-green-600 hover:bg-green-700 rounded text-xl text-center">
-                    New Game
+                    New Player
                 </a>
 
                 <a href="{{ route('login') }}"
                     class="block px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded text-xl text-center">
-                    Continue
+                    log in
                 </a>
             </div>
         </div>
