@@ -7,20 +7,14 @@
     </div>
 
     <div class="flex-1 min-h-0 overflow-y-auto pr-2 custom-scrollbar">
-        <div class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3">
-
+        <div class="grid grid-cols-2 sm:grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2">
             @foreach ($items as $item)
                 <button wire:click="selectItem({{ $item->id }})"
-                    class="aspect-square max-w-[120px] max-h-[120px] w-full flex flex-col items-center justify-center hover:cursor-pointer group">
+                    class="aspect-square w-full flex flex-col items-center justify-center hover:cursor-pointer group">
                     <img src="{{ asset($item->image_url) }}" alt="{{ $item->css_id }}"
                         class="max-w-[80%] max-h-[80%] object-contain transition-transform group-hover:scale-105">
-
-                    {{-- <span class="text-xs text-gray-300 mt-1 truncate w-full px-2 text-center">
-                        {{ $item->css_id }}
-                    </span> --}}
                 </button>
             @endforeach
-
         </div>
     </div>
 </div>
