@@ -11,6 +11,19 @@
 
 <body class="bg-black h-full overflow-hidden">
 
+    {{-- -------------------------------------------------------------------------------------------- --}}
+    <div x-data="{ showCover: true }" x-init="setTimeout(() => showCover = false, 3000)" x-show="showCover"
+        x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black">
+        <div class="text-center">
+            <img src="{{ asset('build/assets/images/dancing_kitty.gif') }}" class="w-20 h-20">
+            <p class="mt-4 text-gray-500 font-medium">Loading Experience...</p>
+        </div>
+    </div>
+
+
+    {{-- -------------------------------------------------------------------------------------------- --}}
+
     <main x-data="{ view: 'menu' }" class="flex flex-col h-screen w-full">
 
         <div class="md:hidden fixed top-6 right-6 z-50 text-right">
