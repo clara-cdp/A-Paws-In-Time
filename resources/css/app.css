@@ -1,8 +1,20 @@
+@font-face {
+    font-family: 'PressStart2P-Regular';
+    src: url('../fonts/PressStart2P-Regular.ttf') format('woff2');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Scrollbar Styles */
+/* ---------------  global ------------------------- */
+
+body {
+    font-family: 'PressStart2P-Regular', sans-serif !important;
+}
+
+
+/* ---------------  Scrollbar ------------------------- */
 .custom-scrollbar::-webkit-scrollbar {
     width: 5px;
 }
@@ -16,7 +28,7 @@
     border-radius: 10px;
 }
 
-/*********** item styles*/
+/* --------------- item  ------------------------- */
 .no-drag {
     pointer-events: auto;
     touch-action: manipulation;
@@ -30,4 +42,9 @@ svg [id] {
 svg [id]:hover {
     filter: brightness(1.25);
 
+}
+
+.hidden_interactive_shapes {
+    pointer-events: all;
+    visibility: visible;
 }
