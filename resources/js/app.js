@@ -38,6 +38,8 @@ document.addEventListener('livewire:init', () => {
 
 
 // splash screen---------------------------------
+/*
+
 window.addEventListener('load', () => {
     const splash = document.getElementById('splash-screen');
     setTimeout(() => {
@@ -45,5 +47,7 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             splash.style.display = 'none';
         }, 700);
-    }, 3000);
+    }, 2000);
 });
+
+*/

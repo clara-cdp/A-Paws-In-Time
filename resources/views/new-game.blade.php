@@ -1,43 +1,53 @@
 <x-app-layout>
-    <h1 class="text-2xl font-bold mb-4">A PAWS IN TIME</h1>
-    <p>choose your character's name before to start:</p>
+    <div class="h-screen flex flex-col justify-center items-center bg-black"
+        style="background-image: url('{{ asset('build/assets/images/bg_img.png') }}'); background-size: cover; background-position: center; animate-fade-out">
+        <div class="pop-window w-[90%] md:w-[80%] p-6 ">
+            <div>
+                <h1 class="text-2xl font-bold text-orange-950 mb-6">A PAWS IN TIME</h1>
 
-    @if (auth()->user()->player)
-        <p class="mb-4">Welcome back, <strong>{{ auth()->user()->player->character_name }}</strong>!</p>
 
-        <a href="{{ url('/game') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Continue Adventure
-        </a>
-        {{-- ----------------------------------------------------------------------------------- --}}
-        <form method="POST" action="{{ route('game.destroy') }}"
-            onsubmit="return confirm('Warning: This will delete your character and all progress. Are you sure?')">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="text-red-500 hover:text-red-700 text-sm underline">
-                Reset Character
-            </button>
-        </form>
+                @if (auth()->user()->player)
+                    <p class="mb-6">Welcome back, <strong>{{ auth()->user()->player->character_name }}</strong>!</p>
 
-        {{-- ----------------------------------------------------------------------------------- --}}
-    @else
-        <form method="POST" action="{{ route('game.store') }}">
-            @csrf
+                    <a href="{{ url('/game') }}" class="go-button active:scale-95 transition-all mb-6">
+                        Continue
+                    </a>
 
-            <input type="text" name="character_name" required><br>
+                    <form method="POST" action="{{ route('game.destroy') }}"
+                        onsubmit="return confirm('Warning: This will delete your character and all progress. Are you sure?')">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="confirmDelete(this)" type="submit"
+                            class="text-red-500 hover:text-red-700 text-sm underline mt-6">
+                            Reset Game
+                        </button>
+                    </form>
+                @else
+                    <form method="POST" action="{{ route('game.store') }}">
+                        @csrf
+                        <p>choose your character's name before to start:</p><br>
+                        <input type="text" name="character_name"
+                            class="border-gray-300 focus:border-teal-200 focus:ring-blue-500 rounded-md shadow-sm w-full max-w-[400px]"
+                            required><br>
 
-            <button type="submit">
-                I'm Ready!
-            </button>
-        </form>
-    @endif
-    <hr class="my-4">
+                        <button type="submit" class="go-button active:scale-95 transition-all">
+                            I'm Ready!
+                        </button>
+                    </form>
+                @endif
 
-    <h3>Other Games Available:</h3>
-    <li>
-        <ul> <a href="https://freeasteroids.org/">ASTEROIDS</a></ul>
-        <ul> <a href="https://freeinvaders.org/">SPACE INVADERS</a></ul>
-        <ul> <a href="https://freeminesweeper.org/">MINESWEEPER</a></ul>
+            </div>
 
-    </li>
+        </div>
+        <div class="pop-window w-[90%] md:w-[80%] mt-12 p-6">
+            <div class="">
+                <h3>Other Games Available:</h3>
+                <hr class="mt-2 mb-6 border-2 border-b-orange-950 ">
+                <a class=" text-sm hover:text-teal-500" href="https://freeinvaders.org/"> SPACE INVADERS</><br>
+                    <a class=" text-sm hover:text-teal-500" href="https://freeasteroids.org/">ASTEROIDS</a><br>
+                    <a class=" text-sm hover:text-teal-500" href="https://freeminesweeper.org/">MINESWEEPER</><br>
+
+            </div>
+        </div>
 
 </x-app-layout>
