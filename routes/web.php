@@ -8,7 +8,15 @@ use App\Models\Pocket;
 use App\Http\Controllers\NewGameController;
 
 
-Route::view('/', 'welcome');
+Route::get('/', function () {
+    return view('splash');
+});
+
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 
 Route::get('/dashboard', function () {
     return redirect()->route('game.new');
