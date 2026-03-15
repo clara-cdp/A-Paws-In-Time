@@ -6,7 +6,6 @@
             <div>
                 <img src="{{ asset('build/assets/images/APIT_logico.png') }}" class="mb-5">
 
-
                 @if (auth()->user()->player)
                     <p class="mb-6">Welcome back, <strong>{{ auth()->user()->player->character_name }}</strong>!</p>
 
@@ -14,15 +13,37 @@
                         Continue
                     </a>
 
-                    <form method="POST" action="{{ route('game.destroy') }}"
-                        onsubmit="return confirm('Warning: This will delete your character and all progress. Are you sure?')">
-                        @csrf
-                        @method('DELETE')
-                        <button onclick="confirmDelete(this)" type="submit"
+                    <div>
+                        <button x-data=""
+                            x-on:click.prevent="$dispatch('open-modal', 'confirm-player-deletion')"
                             class="text-red-500 hover:text-red-700 text-sm underline mt-6">
-                            Reset Game
+                            {{ __('Reset Game') }}
                         </button>
-                    </form>
+                    </div>
+                    <x-modal name="confirm-player-deletion">
+                        <div class="p-6">
+                            <h2 class="text-lg font-medium text-gray-900">
+                                {{ __('Are you sure you want to reset?') }}
+                            </h2>
+
+                            <p class="mt-1 text-sm text-gray-600">
+                                Warning: This will delete your character and all progress.
+                            </p>
+
+                            <form method="post" action="{{ route('game.destroy') }}" class="mt-6 flex justify-end">
+                                @csrf
+                                @method('delete')
+
+                                <x-secondary-button x-on:click="$dispatch('close')">
+                                    {{ __('Cancel') }}
+                                </x-secondary-button>
+
+                                <x-danger-button class="ms-3">
+                                    {{ __('Reset Game') }}
+                                </x-danger-button>
+                            </form>
+                        </div>
+                    </x-modal>
                 @else
                     <form method="POST" action="{{ route('game.store') }}">
                         @csrf
