@@ -51,7 +51,7 @@ new #[Layout('layouts.guest')] class extends Component {
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="go-button flex items-center justify-center mt-4 ">
+        <div class=" flex items-center justify-center mt-4 ">
             <x-primary-button>
                 {{ __('Email Me') }}
             </x-primary-button>
