@@ -1,7 +1,7 @@
 <div class="flex flex-col h-full p-2 md:p-0 mx-auto w-full">
 
     <div class="flex-none">
-        <h2 class="hidden sm:block font-bold text-yellow-200 uppercase text-base md:text-lg md:tracking-widest">
+        <h2 class="hidden sm:block font-bold text-teal-200 uppercase text-base md:text-lg md:tracking-widest">
             {{ $playerName }}'s pocket
         </h2>
     </div>

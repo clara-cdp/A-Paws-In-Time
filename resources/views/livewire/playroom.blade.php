@@ -2,14 +2,19 @@
     <div class="absolute top-4 left-4 z-50 pointer-events-none ">
         <h1>{{ $room->name }}</h1>
     </div>
-    {{-- dialog --}}
+
+
     <div id="game-dialog"
-        class="absolute top-16 left-4 z-50 w-[90vw] md:w-[600px] pointer-events-none transition-opacity duration-300 opacity-0 hidden">
+        class="absolute top-16 left-4 z-50 w-[85vw] md:w-auto md:max-w-[600px] pointer-events-none transition-opacity duration-300 opacity-0 hidden">
         <div
-            class="whitespace-nowrap bg-black/90 border-2 border-yellow-300 text-yellow-200 p-4 text-center font-bold tracking-widest  md:text-base rounded-lg shadow-[0_0_15px_rgba(253,224,71,0.5)]">
+            class="bg-black/90 border-2 border-yellow-300 text-yellow-200 p-3 md:p-4 text-center font-bold tracking-widest text-xs md:text-base rounded-lg shadow-[0_0_15px_rgba(253,224,71,0.5)] break-words">
             <span id="game-dialog-text"></span>
         </div>
     </div>
+
+
+
+
     {{-- room rendering --}}
     <div x-ref="mapContainer" class="absolute left-0 top-0 select-none touch-none" :style="style"
         :class="isDragging ? 'cursor-grabbing' : 'cursor-grab'" @pointerdown="startDrag" @pointermove="onDrag"
