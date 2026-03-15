@@ -40,7 +40,7 @@
             </div>
         </div> --}}
 
-        <div class="w-full sm:max-w-md px-6 py-4 ">
+        <div class="w-full sm:max-w-md md:max-w-[700px] px-6 py-4 ">
             {{ $slot }}
         </div>
     </div>

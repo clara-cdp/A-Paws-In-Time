@@ -1,9 +1,10 @@
 <x-app-layout>
     <div class="h-screen flex flex-col justify-center items-center bg-black"
         style="background-image: url('{{ asset('build/assets/images/bg_img.png') }}'); background-size: cover; background-position: center; animate-fade-out">
-        <div class="pop-window w-[90%] md:w-[80%] p-6 ">
+
+        <div class="pop-window w-[90%] p-6 ">
             <div>
-                <h1 class="text-2xl font-bold text-orange-950 mb-6">A PAWS IN TIME</h1>
+                <img src="{{ asset('build/assets/images/APIT_logico.png') }}" class="mb-5">
 
 
                 @if (auth()->user()->player)
@@ -26,9 +27,8 @@
                     <form method="POST" action="{{ route('game.store') }}">
                         @csrf
                         <p>choose your character's name before to start:</p><br>
-                        <input type="text" name="character_name"
-                            class="border-gray-300 focus:border-teal-200 focus:ring-blue-500 rounded-md shadow-sm w-full max-w-[400px]"
-                            required><br>
+                        <input type="text" name="character_name" required
+                            class="border-gray-300 focus:border-teal-200 focus:ring-blue-500 rounded-md shadow-sm w-full max-w-[500px]'"><br>
 
                         <button type="submit" class="go-button active:scale-95 transition-all">
                             I'm Ready!
