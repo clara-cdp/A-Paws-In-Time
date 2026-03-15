@@ -35,3 +35,19 @@ document.addEventListener('livewire:init', () => {
     });
 
 });
+
+
+// splash screen---------------------------------
+/*
+
+window.addEventListener('load', () => {
+    const splash = document.getElementById('splash-screen');
+    setTimeout(() => {
+        splash.style.opacity = '0';
+        setTimeout(() => {
+            splash.style.display = 'none';
+        }, 700);
+    }, 2000);
+});
+
+*/

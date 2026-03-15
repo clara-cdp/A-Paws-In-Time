@@ -1,43 +1,74 @@
 <x-app-layout>
-    <h1 class="text-2xl font-bold mb-4">A PAWS IN TIME</h1>
-    <p>choose your character's name before to start:</p>
+    <div class="h-screen flex flex-col justify-center items-center bg-black"
+        style="background-image: url('{{ asset('build/assets/images/bg_img.png') }}'); background-size: cover; background-position: center; animate-fade-out">
 
-    @if (auth()->user()->player)
-        <p class="mb-4">Welcome back, <strong>{{ auth()->user()->player->character_name }}</strong>!</p>
+        <div class="pop-window w-[90%] p-6 ">
+            <div>
+                <img src="{{ asset('build/assets/images/APIT_logico.png') }}" class="mb-5">
 
-        <a href="{{ url('/game') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Continue Adventure
-        </a>
-        {{-- ----------------------------------------------------------------------------------- --}}
-        <form method="POST" action="{{ route('game.destroy') }}"
-            onsubmit="return confirm('Warning: This will delete your character and all progress. Are you sure?')">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="text-red-500 hover:text-red-700 text-sm underline">
-                Reset Character
-            </button>
-        </form>
+                @if (auth()->user()->player)
+                    <p class="mb-6">Welcome back, <strong>{{ auth()->user()->player->character_name }}</strong>!</p>
 
-        {{-- ----------------------------------------------------------------------------------- --}}
-    @else
-        <form method="POST" action="{{ route('game.store') }}">
-            @csrf
+                    <a href="{{ url('/game') }}" class="go-button active:scale-95 transition-all mb-6">
+                        Continue
+                    </a>
 
-            <input type="text" name="character_name" required><br>
+                    <div>
+                        <button x-data=""
+                            x-on:click.prevent="$dispatch('open-modal', 'confirm-player-deletion')"
+                            class="text-red-500 hover:text-red-700 text-sm underline mt-6">
+                            {{ __('Reset Game') }}
+                        </button>
+                    </div>
+                    <x-modal name="confirm-player-deletion">
+                        <div class="p-6">
+                            <h2 class="text-lg font-medium text-gray-900">
+                                {{ __('Are you sure you want to reset?') }}
+                            </h2>
 
-            <button type="submit">
-                I'm Ready!
-            </button>
-        </form>
-    @endif
-    <hr class="my-4">
+                            <p class="mt-1 text-sm text-gray-600">
+                                Warning: This will delete your character and all progress.
+                            </p>
 
-    <h3>Other Games Available:</h3>
-    <li>
-        <ul> <a href="https://freeasteroids.org/">ASTEROIDS</a></ul>
-        <ul> <a href="https://freeinvaders.org/">SPACE INVADERS</a></ul>
-        <ul> <a href="https://freeminesweeper.org/">MINESWEEPER</a></ul>
+                            <form method="post" action="{{ route('game.destroy') }}" class="mt-6 flex justify-end">
+                                @csrf
+                                @method('delete')
 
-    </li>
+                                <x-secondary-button x-on:click="$dispatch('close')">
+                                    {{ __('Cancel') }}
+                                </x-secondary-button>
+
+                                <x-danger-button class="ms-3">
+                                    {{ __('Reset Game') }}
+                                </x-danger-button>
+                            </form>
+                        </div>
+                    </x-modal>
+                @else
+                    <form method="POST" action="{{ route('game.store') }}">
+                        @csrf
+                        <p>choose your character's name before to start:</p><br>
+                        <input type="text" name="character_name" required
+                            class="border-gray-300 focus:border-teal-200 focus:ring-blue-500 rounded-md shadow-sm w-full max-w-[500px]'"><br>
+
+                        <button type="submit" class="go-button active:scale-95 transition-all">
+                            I'm Ready!
+                        </button>
+                    </form>
+                @endif
+
+            </div>
+
+        </div>
+        <div class="pop-window w-[90%] md:w-[80%] mt-12 p-6">
+            <div class="">
+                <h3>Other Games Available:</h3>
+                <hr class="mt-2 mb-6 border-2 border-b-orange-950 ">
+                <a class=" text-sm hover:text-teal-500" href="https://freeinvaders.org/"> SPACE INVADERS</><br>
+                    <a class=" text-sm hover:text-teal-500" href="https://freeasteroids.org/">ASTEROIDS</a><br>
+                    <a class=" text-sm hover:text-teal-500" href="https://freeminesweeper.org/">MINESWEEPER</><br>
+
+            </div>
+        </div>
 
 </x-app-layout>
