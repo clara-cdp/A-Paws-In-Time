@@ -20,7 +20,7 @@
         :class="isDragging ? 'cursor-grabbing' : 'cursor-grab'" @pointerdown="startDrag" @pointermove="onDrag"
         @pointerup="endDrag" @pointercancel="endDrag">
         <div class="h-full w-full [&>svg]:w-full [&>svg]:h-full">
-            {!! file_get_contents(public_path($room->image_URL)) !!}
+            {!! file_get_contents(public_path($room->image_url)) !!}
         </div>
     </div>
 

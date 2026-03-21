@@ -20,7 +20,7 @@ class StartGame
             $player = Player::create([
                 'user_id' => $user->id,
                 'character_name' => $name,
-                'room_id' => Room::where('name', 'The Garden')->firstOrFail()->id,
+                'room_id' => Room::where('name', "Mansion's Garden")->firstOrFail()->id,
                 'story_step' => 0,
             ]);
 

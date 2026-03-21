@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('css_id', 45);
             $table->longText('description');
             $table->string('image_url', 150)->nullable();
             
@@ -24,9 +25,6 @@ return new class extends Migration
             $table->foreignId('event_id')->nullable()->constrained();
             $table->foreignId('player_id')->nullable()->constrained()->cascadeOnDelete();
 
-            //css
-            $table->string('css_id', 45);
-        
             $table->timestamps();
         });
     }
