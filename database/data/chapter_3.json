@@ -5,12 +5,6 @@
             "description": "Same library but in the past",
             "image_url": "build/assets/rooms/past_library_1.svg",
             "room_type": "hor"
-        },
-        {
-            "name": "  A Library (again)",
-            "description": "some things seem to have shifted a bit...",
-            "image_url": "build/assets/rooms/pres_library_2.svg",
-            "room_type": "hor"
         }
     ],
     "items": [
@@ -32,7 +26,7 @@
         },
         {
             "css_id": "time door",
-            "description": "should I stay or should I go",
+            "description": "Should I stay or should I go",
             "is_portable": false,
             "is_visible": false,
             "room": "Old Library",
@@ -40,7 +34,7 @@
         },
         {
             "css_id": "gear",
-            "description": "gears everywhere",
+            "description": "Gears everywhere",
             "is_portable": true,
             "is_visible": false,
             "room": "Old Library",
@@ -56,7 +50,7 @@
         },
         {
             "css_id": "magnet",
-            "description": "always been attracted to these",
+            "description": "Always been attracted to these",
             "is_portable": true,
             "is_visible": true,
             "room": "Old Library",
@@ -64,7 +58,7 @@
         },
         {
             "css_id": "rod",
-            "description": " muahaha!! who is the mad scientist now?",
+            "description": " Muahaha!! who is the mad scientist now?",
             "is_portable": true,
             "is_visible": false,
             "room": "Old Library",
@@ -72,9 +66,9 @@
         },
         {
             "css_id": "rope",
-            "description": "I can't reach it",
-            "is_portable": true,
-            "is_visible": true,
+            "description": "It is stuck...",
+            "is_portable": false,
+            "is_visible": false,
             "room": "Old Library",
             "image_url": "build/assets/items/rope.png"
         },
@@ -88,7 +82,7 @@
         },
         {
             "css_id": "jar",
-            "description": "an empty glass container",
+            "description": "An empty glass container.",
             "is_portable": true,
             "is_visible": true,
             "room": "Old Library",
@@ -96,7 +90,7 @@
         },
         {
             "css_id": "mapa mundi",
-            "description": "World domination trough Time and Relative Space",
+            "description": "World domination trough Time and Relative Space.",
             "is_portable": false,
             "is_visible": true,
             "room": "Old Library",
@@ -104,7 +98,7 @@
         },
         {
             "css_id": "poster_1",
-            "description": "this obsession for cuckoos is unhealthy",
+            "description": "This obsession for cuckoos is unhealthy.",
             "is_portable": false,
             "is_visible": true,
             "room": "Old Library",
@@ -136,7 +130,7 @@
         },
         {
             "css_id": "no exit",
-            "description": "no way I go out there now, then... nope",
+            "description": "No way I go out there now, or then... ",
             "is_portable": false,
             "is_visible": true,
             "room": "Old Library",
@@ -168,16 +162,7 @@
             "required_item": "rod",
             "unlocked_item": "gear",
             "target_room": null,
-            "reward": "it's a gear! so unexpected!"
-        },
-        {
-            "verb_trigger": "USE",
-            "target_item": "past grandpa clock",
-            "required_item": "gear",
-            "unlocked_item": "time door",
-            "target_room": "A Library (again)",
-            "step_required": 3,
-            "next_step": 4
+            "reward": "It's a gear! so unexpected!"
         }
     ]
 }

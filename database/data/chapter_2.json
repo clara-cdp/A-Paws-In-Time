@@ -18,7 +18,7 @@
         },
         {
             "css_id": "grandfather's clock",
-            "description": "my grandfather had one of these.",
+            "description": "My grandfather had a clock.",
             "is_portable": false,
             "is_visible": true,
             "room": "A Library",
@@ -34,7 +34,7 @@
         },
         {
             "css_id": "an object2",
-            "description": "Ah, classic 'PONGO'",
+            "description": "Ah, classic 'PONGO'.",
             "is_portable": false,
             "is_visible": true,
             "room": "A Library",
@@ -50,7 +50,7 @@
         },
         {
             "css_id": "bookcase",
-            "description": "Not a single good novel... ",
+            "description": "Not a single good novel. ",
             "is_portable": false,
             "is_visible": true,
             "room": "A Library",
@@ -66,7 +66,7 @@
             "target_room": "A Library",
             "step_required": 2,
             "next_step": 0,
-            "reward": "let's go! "
+            "reward": "Let's go! "
         },
         {
             "verb_trigger": "GO TO",

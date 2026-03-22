@@ -1,0 +1,265 @@
+{
+    "rooms": [
+        {
+            "name": "Back in the present!",
+            "description": "",
+            "image_url": "build/assets/rooms/pres_library_2.svg",
+            "room_type": "hor"
+        },
+        {
+            "name": "Outside Mansion",
+            "description": "",
+            "image_url": "build/assets/rooms/garden_2.svg",
+            "room_type": "all"
+        }
+    ],
+    "items": [
+        {
+            "css_id": "past new clock",
+            "description": "I hope it still work if I try to go through it.",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "present new clock",
+            "description": "Allons-y!",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "grease jar",
+            "description": "Disgusting! But useful I hope...!",
+            "is_portable": true,
+            "is_visible": false,
+            "room": "Outside Mansion",
+            "image_url": "build/assets/items/grease_jar.png"
+        },
+        {
+            "css_id": "old rope",
+            "description": "0 maintenace... I can't pull it.",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "new rope",
+            "description": "looks great! Let's try!",
+            "is_portable": false,
+            "is_visible": false,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "secret_door",
+            "description": "Oh my... this is getting serious!",
+            "is_portable": false,
+            "is_visible": false,
+            "room": "Back in the present!",
+            "image_url": "build/assets/items/secret_door.png"
+        },
+        {
+            "css_id": "magnifying glass",
+            "description": "Cool!",
+            "is_portable": true,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": "build/assets/items/magnifying_glass.png"
+        },
+        {
+            "css_id": "painting 3",
+            "description": "Still don't get it though...",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "garden door 2",
+            "description": "Garden looks pretty from here... ",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "an object2-2",
+            "description": "Ah, classic 'PONGO'",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "an object-2",
+            "description": "WTH is that?",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "bookcase-2",
+            "description": "Not a single good novel... ",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Back in the present!",
+            "image_url": null
+        },
+        {
+            "css_id": "mansion's door-2",
+            "description": "It's unlocked, now",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Outside Mansion",
+            "image_url": null
+        },
+        {
+            "css_id": "seed",
+            "description": "A plant your own hazelnut tree kit.",
+            "is_portable": true,
+            "is_visible": true,
+            "room": "Outside Mansion",
+            "image_url": "build/assets/items/seed.png"
+        },
+        {
+            "css_id": "grease pot-2",
+            "description": "Machinery oil. I am so not carring that.",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Outside Mansion",
+            "image_url": null
+        },
+        {
+            "css_id": "pile-2",
+            "description": "Weird mechanical bits.",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Outside Mansion",
+            "image_url": null
+        },
+        {
+            "css_id": "big_pile-2",
+            "description": "More mechanical staff...",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Outside Mansion",
+            "image_url": null
+        },
+        {
+            "css_id": "big_gear-2",
+            "description": "Don't know what that is.",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Outside Mansion",
+            "image_url": null
+        },
+        {
+            "css_id": "booths",
+            "description": "I sense a pattern here...",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Outside Mansion",
+            "image_url": null
+        },
+        {
+            "css_id": "blink-2",
+            "description": "Don't blink, don't even think about it.",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Outside Mansion",
+            "image_url": null
+        }
+    ],
+    "events": [
+        {
+            "verb_trigger": "GO TO",
+            "target_item": "garden door 2",
+            "required_item": null,
+            "unlocked_item": null,
+            "target_room": "Outside Mansion",
+            "step_required": 3,
+            "next_step": 0
+        },
+        {
+            "verb_trigger": "GO TO",
+            "target_item": "mansion's door-2",
+            "required_item": null,
+            "unlocked_item": null,
+            "target_room": "Back in the present!",
+            "step_required": 3,
+            "next_step": 0,
+            "reward": "let's go! "
+        },
+        {
+            "verb_trigger": "USE",
+            "target_item": "past grandpa clock",
+            "required_item": "gear",
+            "unlocked_item": "time door",
+            "target_room": "Back in the present!",
+            "step_required": 3,
+            "next_step": 4
+        },
+        {
+            "verb_trigger": "PULL",
+            "target_item": "old rope",
+            "required_item": null,
+            "unlocked_item": "rope",
+            "target_room": null,
+            "step_required": 4,
+            "next_step": 0,
+            "reward": "It might break..."
+        },
+        {
+            "verb_trigger": "GO TO",
+            "target_item": "present new clock",
+            "required_item": null,
+            "unlocked_item": null,
+            "target_room": "Old Library",
+            "step_required": 4,
+            "next_step": 0
+        },
+        {
+            "verb_trigger": "GO TO",
+            "target_item": "time door",
+            "required_item": null,
+            "unlocked_item": null,
+            "target_room": "Back in the present!",
+            "step_required": 4,
+            "next_step": 0
+        },
+        {
+            "verb_trigger": "USE",
+            "target_item": "grease pot-2",
+            "required_item": "jar",
+            "unlocked_item": "grease jar",
+            "target_room": null,
+            "step_required": 4,
+            "next_step": 0,
+            "reward": "filled the glass with grease, yak!"
+        },
+        {
+            "verb_trigger": "USE",
+            "target_item": "rope",
+            "required_item": "grease jar",
+            "unlocked_item": "new rope",
+            "target_room": null,
+            "step_required": 4,
+            "next_step": 0,
+            "reward": "This should last for ages."
+        },
+        {
+            "verb_trigger": "PULL",
+            "target_item": "new rope",
+            "required_item": null,
+            "unlocked_item": "secret_door",
+            "target_room": null,
+            "step_required": 4,
+            "next_step": 5
+        }
+    ]
+}

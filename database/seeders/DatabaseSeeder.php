@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         
-        $chapters = ['chapter_1.json', 'chapter_2.json', 'chapter_3.json'];
+        $chapters = ['chapter_1.json', 'chapter_2.json', 'chapter_3.json','chapter_4.json','chapter_5.json'];
 
         
         foreach ($chapters as $file) {

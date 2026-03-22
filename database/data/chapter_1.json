@@ -66,7 +66,7 @@
         },
         {
             "css_id": "mansion's door",
-            "description": "it's locked",
+            "description": "It's locked.",
             "is_portable": false,
             "is_visible": false,
             "room": "Mansion's Garden",
@@ -74,7 +74,7 @@
         },
         {
             "css_id": "cuckoo",
-            "description": "A cuckoo cookie cook called Cooper could cook cuckoo cookies",
+            "description": "A cuckoo cookie cook called Cooper could cook cuckoo cookies.",
             "is_portable": true,
             "is_visible": true,
             "room": "Mansion's Garden",
@@ -82,23 +82,15 @@
         },
         {
             "css_id": "grease pot",
-            "description": "yak! I am not carring that",
+            "description": "Machinery oil. I am so not carring that.",
             "is_portable": false,
             "is_visible": true,
             "room": "Mansion's Garden",
             "image_url": "build/assets/items/grease_pot.png"
         },
         {
-            "css_id": "seed",
-            "description": "A plant your own hazelnut tree kit.",
-            "is_portable": true,
-            "is_visible": true,
-            "room": "Mansion's Garden",
-            "image_url": "build/assets/items/seed.png"
-        },
-        {
             "css_id": "pile",
-            "description": "weird mechanical bits",
+            "description": "Weird mechanical bits.",
             "is_portable": false,
             "is_visible": true,
             "room": "Mansion's Garden",
@@ -106,7 +98,7 @@
         },
         {
             "css_id": "big_pile",
-            "description": "more mechanical staff...",
+            "description": "More mechanical staff...",
             "is_portable": false,
             "is_visible": true,
             "room": "Mansion's Garden",
@@ -114,7 +106,7 @@
         },
         {
             "css_id": "big_gear",
-            "description": "Don't know what that is",
+            "description": "Don't know what that is.",
             "is_portable": false,
             "is_visible": true,
             "room": "Mansion's Garden",
@@ -163,7 +155,7 @@
             "unlocked_item": "mansion's door",
             "target_room": null,
             "next_step": 1,
-            "reward": "GOOD BOY!! "
+            "reward": "Go play! GOOD BOY!! "
         },
         {
             "verb_trigger": "USE",
@@ -173,7 +165,7 @@
             "target_room": null,
             "step_required": 1,
             "next_step": 2,
-            "reward": "it works!"
+            "reward": "It works!"
         }
     ]
 }
