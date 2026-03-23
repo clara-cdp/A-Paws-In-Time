@@ -29,7 +29,8 @@ return new class extends Migration
             $table->foreignId('target_room_id')->nullable()->constrained('rooms');
             $table->integer('next_step')->default(0);
 
-          
+            //reward message
+            $table->longText('reward')->nullable();
             $table->timestamps();
         });
     }

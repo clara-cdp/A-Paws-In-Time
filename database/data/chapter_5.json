@@ -1,0 +1,31 @@
+{
+    "rooms": [
+        {
+            "name": "The Attic",
+            "description": "Some items have shifted",
+            "image_url": "build/assets/rooms/attic.svg",
+            "room_type": "ver"
+        }
+    ],
+    "items": [
+        {
+            "css_id": "kitty",
+            "description": "My cat!",
+            "is_portable": true,
+            "is_visible": true,
+            "room": "The Attic",
+            "image_url": "build/assets/items/kitty.png"
+        }
+    ],
+    "events": [
+        {
+            "verb_trigger": "GO TO",
+            "target_item": "secret door",
+            "required_item": null,
+            "unlocked_item": null,
+            "target_room": "The Attic",
+            "step_required": 5,
+            "next_step": 6
+        }
+    ]
+}

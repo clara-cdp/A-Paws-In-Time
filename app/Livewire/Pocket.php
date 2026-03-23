@@ -44,21 +44,18 @@ class Pocket extends Component
 
             if ($message) {
                 $this->dispatch('show-dialog', text: $message);
-               // $this->dispatch('inventory-updated');
+                $this->dispatch('pocket-updated');
             }
         }
     }
 
     public function render()
     {
-        $player = Auth::user()->player;
+        $items = Auth::user()->player->pocket->items()
+            ->where('is_visible', true)
+            ->get();
 
-        $pocketItems = $player && $player->pocket
-            ? $player->pocket->items()->where('is_visible', true)->get()
-            : collect();
-
-        return view('livewire.pocket', [
-            'items' => $pocketItems
-        ]);
+        return view('livewire.pocket', ['items' => $items]);
+      
     }
 }

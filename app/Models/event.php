@@ -14,7 +14,8 @@ class event extends Model
     'required_object_id', 
     'unlocked_object_id', 
     'target_room_id', 
-    'next_step'];
+    'next_step',
+    'reward'];
 
 
     public function item()
