@@ -3,7 +3,7 @@
         {
             "name": "Old Library",
             "description": "Same library but in the past",
-            "image_url": "build/assets/rooms/past_library_1.svg",
+            "image_url": "build/assets/rooms/old_library.svg",
             "room_type": "hor"
         }
     ],
@@ -17,7 +17,7 @@
             "image_url": null
         },
         {
-            "css_id": "past grandpa clock",
+            "css_id": "past broken clock",
             "description": "Can't go back, something fell off...",
             "is_portable": false,
             "is_visible": true,
@@ -26,7 +26,7 @@
         },
         {
             "css_id": "time door",
-            "description": "Should I stay or should I go",
+            "description": "Awesomow time travelling door",
             "is_portable": false,
             "is_visible": false,
             "room": "Old Library",
@@ -64,13 +64,13 @@
             "room": "Old Library",
             "image_url": "build/assets/items/rod.png"
         },
-        {
+        { 
             "css_id": "rope",
             "description": "It is stuck...",
             "is_portable": false,
             "is_visible": false,
             "room": "Old Library",
-            "image_url": "build/assets/items/rope.png"
+            "image_url": null
         },
         {
             "css_id": "supplies",
@@ -78,7 +78,7 @@
             "is_portable": false,
             "is_visible": true,
             "room": "Old Library",
-            "image_url": "build/assets/items/jar.png"
+            "image_url": null
         },
         {
             "css_id": "jar",

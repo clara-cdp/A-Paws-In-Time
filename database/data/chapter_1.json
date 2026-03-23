@@ -58,7 +58,7 @@
         },
         {
             "css_id": "dog",
-            "description": "You shall not pass!",
+            "description": "YOU SHALL NOT PASS!",
             "is_portable": false,
             "is_visible": true,
             "room": "Mansion's Garden",
@@ -70,7 +70,7 @@
             "is_portable": false,
             "is_visible": false,
             "room": "Mansion's Garden",
-            "image_url": "build/assets/items/mansion_door.png"
+            "image_url": null
         },
         {
             "css_id": "cuckoo",
@@ -82,11 +82,11 @@
         },
         {
             "css_id": "grease pot",
-            "description": "Machinery oil. I am so not carring that.",
+            "description": "Big Barrel of Machinery oil. I am so not carring that.",
             "is_portable": false,
             "is_visible": true,
             "room": "Mansion's Garden",
-            "image_url": "build/assets/items/grease_pot.png"
+            "image_url": null
         },
         {
             "css_id": "pile",
@@ -107,14 +107,6 @@
         {
             "css_id": "big_gear",
             "description": "Don't know what that is.",
-            "is_portable": false,
-            "is_visible": true,
-            "room": "Mansion's Garden",
-            "image_url": null
-        },
-        {
-            "css_id": "booths",
-            "description": "I sense a pattern here...",
             "is_portable": false,
             "is_visible": true,
             "room": "Mansion's Garden",

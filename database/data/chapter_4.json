@@ -7,7 +7,7 @@
             "room_type": "hor"
         },
         {
-            "name": "Outside Mansion",
+            "name": "Outside the Mansion",
             "description": "",
             "image_url": "build/assets/rooms/garden_2.svg",
             "room_type": "all"
@@ -15,16 +15,8 @@
     ],
     "items": [
         {
-            "css_id": "past new clock",
-            "description": "I hope it still work if I try to go through it.",
-            "is_portable": false,
-            "is_visible": true,
-            "room": "Back in the present!",
-            "image_url": null
-        },
-        {
             "css_id": "present new clock",
-            "description": "Allons-y!",
+            "description": "I hope it still works if I try to GO through it.",
             "is_portable": false,
             "is_visible": true,
             "room": "Back in the present!",
@@ -35,7 +27,7 @@
             "description": "Disgusting! But useful I hope...!",
             "is_portable": true,
             "is_visible": false,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": "build/assets/items/grease_jar.png"
         },
         {
@@ -55,12 +47,12 @@
             "image_url": null
         },
         {
-            "css_id": "secret_door",
+            "css_id": "secret door",
             "description": "Oh my... this is getting serious!",
             "is_portable": false,
             "is_visible": false,
             "room": "Back in the present!",
-            "image_url": "build/assets/items/secret_door.png"
+            "image_url": null
         },
         {
             "css_id": "magnifying glass",
@@ -79,7 +71,7 @@
             "image_url": null
         },
         {
-            "css_id": "garden door 2",
+            "css_id": "garden door_2",
             "description": "Garden looks pretty from here... ",
             "is_portable": false,
             "is_visible": true,
@@ -87,7 +79,7 @@
             "image_url": null
         },
         {
-            "css_id": "an object2-2",
+            "css_id": "thingy",
             "description": "Ah, classic 'PONGO'",
             "is_portable": false,
             "is_visible": true,
@@ -95,7 +87,7 @@
             "image_url": null
         },
         {
-            "css_id": "an object-2",
+            "css_id": "thingy2",
             "description": "WTH is that?",
             "is_portable": false,
             "is_visible": true,
@@ -103,7 +95,7 @@
             "image_url": null
         },
         {
-            "css_id": "bookcase-2",
+            "css_id": "bookcase2",
             "description": "Not a single good novel... ",
             "is_portable": false,
             "is_visible": true,
@@ -111,11 +103,11 @@
             "image_url": null
         },
         {
-            "css_id": "mansion's door-2",
+            "css_id": "mansion's door_2",
             "description": "It's unlocked, now",
             "is_portable": false,
             "is_visible": true,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": null
         },
         {
@@ -123,39 +115,39 @@
             "description": "A plant your own hazelnut tree kit.",
             "is_portable": true,
             "is_visible": true,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": "build/assets/items/seed.png"
         },
         {
             "css_id": "grease pot-2",
-            "description": "Machinery oil. I am so not carring that.",
+            "description": "Big gooey machinery oil barrel.",
             "is_portable": false,
             "is_visible": true,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": null
         },
         {
-            "css_id": "pile-2",
+            "css_id": "pile_2",
             "description": "Weird mechanical bits.",
             "is_portable": false,
             "is_visible": true,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": null
         },
         {
-            "css_id": "big_pile-2",
+            "css_id": "big_pile_2",
             "description": "More mechanical staff...",
             "is_portable": false,
             "is_visible": true,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": null
         },
         {
-            "css_id": "big_gear-2",
+            "css_id": "big_gear_2",
             "description": "Don't know what that is.",
             "is_portable": false,
             "is_visible": true,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": null
         },
         {
@@ -163,31 +155,31 @@
             "description": "I sense a pattern here...",
             "is_portable": false,
             "is_visible": true,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": null
         },
         {
-            "css_id": "blink-2",
+            "css_id": "blink_2",
             "description": "Don't blink, don't even think about it.",
             "is_portable": false,
             "is_visible": true,
-            "room": "Outside Mansion",
+            "room": "Outside the Mansion",
             "image_url": null
         }
     ],
     "events": [
         {
             "verb_trigger": "GO TO",
-            "target_item": "garden door 2",
+            "target_item": "garden door_2",
             "required_item": null,
             "unlocked_item": null,
-            "target_room": "Outside Mansion",
+            "target_room": "Outside the Mansion",
             "step_required": 3,
             "next_step": 0
         },
         {
             "verb_trigger": "GO TO",
-            "target_item": "mansion's door-2",
+            "target_item": "mansion's door_2",
             "required_item": null,
             "unlocked_item": null,
             "target_room": "Back in the present!",
@@ -197,7 +189,7 @@
         },
         {
             "verb_trigger": "USE",
-            "target_item": "past grandpa clock",
+            "target_item": "past broken clock",
             "required_item": "gear",
             "unlocked_item": "time door",
             "target_room": "Back in the present!",
@@ -256,7 +248,7 @@
             "verb_trigger": "PULL",
             "target_item": "new rope",
             "required_item": null,
-            "unlocked_item": "secret_door",
+            "unlocked_item": "secret door",
             "target_room": null,
             "step_required": 4,
             "next_step": 5

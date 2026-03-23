@@ -22,10 +22,10 @@
             "is_portable": false,
             "is_visible": true,
             "room": "A Library",
-            "iamge_url": "build/assets/items/clock.png"
+            "iamge_url": null
         },
         {
-            "css_id": "an object",
+            "css_id": "gizmo",
             "description": "WTH is that?",
             "is_portable": false,
             "is_visible": true,
@@ -33,7 +33,7 @@
             "image_url": null
         },
         {
-            "css_id": "an object2",
+            "css_id": "gizmo2",
             "description": "Ah, classic 'PONGO'.",
             "is_portable": false,
             "is_visible": true,

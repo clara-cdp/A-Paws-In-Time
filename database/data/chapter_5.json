@@ -20,7 +20,7 @@
     "events": [
         {
             "verb_trigger": "GO TO",
-            "target_item": "secret_door",
+            "target_item": "secret door",
             "required_item": null,
             "unlocked_item": null,
             "target_room": "The Attic",
