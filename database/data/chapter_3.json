@@ -64,7 +64,7 @@
             "room": "Old Library",
             "image_url": "build/assets/items/rod.png"
         },
-        { 
+        {
             "css_id": "rope",
             "description": "It is stuck...",
             "is_portable": false,
@@ -144,8 +144,8 @@
             "required_item": "cuckoo",
             "unlocked_item": null,
             "target_room": "Old Library",
-            "step_required": 2,
-            "next_step": 3,
+            "step_required": 3,
+            "next_step": 4,
             "reward": "WOOO!!"
         },
         {
