@@ -3,13 +3,13 @@
         {
             "name": "The Attic",
             "description": "Some items have shifted",
-            "image_url": "build/assets/rooms/attic.svg",
+            "image_url": "assets/rooms/attic.svg",
             "room_type": "ver"
         },
         {
             "name": "The End",
             "description": "Some items have shifted",
-            "image_url": "build/assets/rooms/end.svg",
+            "image_url": "assets/rooms/end.svg",
             "room_type": "hor"
         }
     ],
@@ -20,7 +20,7 @@
             "is_portable": false,
             "is_visible": true,
             "room": "The Attic",
-            "image_url": "build/assets/items/kitty.png"
+            "image_url": "assets/items/kitty.png"
         }
     ],
     "events": [

@@ -17,7 +17,7 @@
         x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black">
         <div class="text-center">
-            <img src="{{ asset('build/assets/images/dancing_kitty.gif') }}" class="w-20 h-20">
+            <img src="{{ asset('assets/images/dancing_kitty.gif') }}" class="w-20 h-20">
             <p class="mt-4 text-gray-500 font-medium">Loading Experience...</p>
         </div>
     </div>
@@ -28,10 +28,10 @@
         playing: true,
         audio: new Audio(),
         playlist: [
-            '{{ asset('build/assets/audio/track_1.mp3') }}',
-            '{{ asset('build/assets/audio/track_2.mp3') }}',
-            '{{ asset('build/assets/audio/track_3.mp3') }}',
-            '{{ asset('build/assets/audio/track_4.mp3') }}'
+            '{{ asset('assets/audio/track_1.mp3') }}',
+            '{{ asset('assets/audio/track_2.mp3') }}',
+            '{{ asset('assets/audio/track_3.mp3') }}',
+            '{{ asset('assets/audio/track_4.mp3') }}'
         ],
         index: 0,
         playNext() {

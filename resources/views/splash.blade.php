@@ -16,10 +16,10 @@
         <div id="splash-screen" class="fixed inset-0 w-screen h-screen flex justify-center items-center bg-black">
 
             <picture class="w-full h-full m-8 p-8">
-                <source media="(min-width: 1024px)" srcset="{{ asset('build/assets/images/APIT_cover_desktop.png') }}">
-                <source media="(min-width: 768px)" srcset="{{ asset('build/assets/images/APIT_cover_tablet.png') }}">
+                <source media="(min-width: 1024px)" srcset="{{ asset('assets/images/APIT_cover_desktop.png') }}">
+                <source media="(min-width: 768px)" srcset="{{ asset('assets/images/APIT_cover_tablet.png') }}">
 
-                <img src="{{ asset('build/assets/images/APIT_cover_mobile.png') }}" alt="Welcome"
+                <img src="{{ asset('assets/images/APIT_cover_mobile.png') }}" alt="Welcome"
                     class="w-full h-full object-contain object-center block">
             </picture>
 

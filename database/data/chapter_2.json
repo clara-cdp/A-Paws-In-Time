@@ -3,7 +3,7 @@
         {
             "name": "A Library",
             "description": "A clattered old fashioned library.",
-            "image_url": "build/assets/rooms/pres_library_1.svg",
+            "image_url": "assets/rooms/pres_library_1.svg",
             "room_type": "hor"
         }
     ],
