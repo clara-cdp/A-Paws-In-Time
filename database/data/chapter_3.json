@@ -3,7 +3,7 @@
         {
             "name": "Old Library",
             "description": "Same library but in the past",
-            "image_url": "build/assets/rooms/old_library.svg",
+            "image_url": "assets/rooms/old_library.svg",
             "room_type": "hor"
         }
     ],
@@ -38,7 +38,7 @@
             "is_portable": true,
             "is_visible": false,
             "room": "Old Library",
-            "image_url": "build/assets/items/gear.png"
+            "image_url": "assets/items/gear.png"
         },
         {
             "css_id": "yarn",
@@ -54,7 +54,7 @@
             "is_portable": true,
             "is_visible": true,
             "room": "Old Library",
-            "image_url": "build/assets/items/magnet.png"
+            "image_url": "assets/items/magnet.png"
         },
         {
             "css_id": "rod",
@@ -62,7 +62,7 @@
             "is_portable": true,
             "is_visible": false,
             "room": "Old Library",
-            "image_url": "build/assets/items/rod.png"
+            "image_url": "assets/items/rod.png"
         },
         {
             "css_id": "rope",
@@ -86,7 +86,7 @@
             "is_portable": true,
             "is_visible": true,
             "room": "Old Library",
-            "image_url": "build/assets/items/jar.png"
+            "image_url": "assets/items/jar.png"
         },
         {
             "css_id": "mapa mundi",

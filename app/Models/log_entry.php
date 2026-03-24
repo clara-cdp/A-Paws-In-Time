@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class log_entry extends Model
+class Log_entry extends Model
 {
     protected $fillable = [
         'player_id',

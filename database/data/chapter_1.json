@@ -3,13 +3,13 @@
         {
             "name": "Mansion's Garden",
             "description": "A lush garden outside the Mad Doctor's mansion.",
-            "image_url": "build/assets/rooms/garden_1.svg",
+            "image_url": "assets/rooms/garden_1.svg",
             "room_type": "all"
         },
         {
             "name": "Intro",
             "description": "An introduction.",
-            "image_url": "build/assets/rooms/intro.svg",
+            "image_url": "assets/rooms/intro.svg",
             "room_type": "hor"
         }
     ],
@@ -20,7 +20,7 @@
             "is_portable": false,
             "is_visible": true,
             "room": null,
-            "image_url": "build/assets/items/redHerring.png"
+            "image_url": "assets/items/redHerring.png"
         },
         {
             "css_id": "start",
@@ -44,7 +44,7 @@
             "is_portable": true,
             "is_visible": false,
             "room": "Mansion's Garden",
-            "image_url": "build/assets/items/tennisBall.png"
+            "image_url": "assets/items/tennisBall.png"
         },
         {
             "css_id": "crowbar",
@@ -52,7 +52,7 @@
             "is_portable": true,
             "is_visible": true,
             "room": "Mansion's Garden",
-            "image_url": "build/assets/items/crowbar.png"
+            "image_url": "assets/items/crowbar.png"
         },
         {
             "css_id": "statue",
@@ -68,7 +68,7 @@
             "is_portable": true,
             "is_visible": false,
             "room": "Mansion's Garden",
-            "image_url": "build/assets/items/key.png"
+            "image_url": "assets/items/key.png"
         },
         {
             "css_id": "dog",
@@ -92,7 +92,7 @@
             "is_portable": true,
             "is_visible": true,
             "room": "Mansion's Garden",
-            "image_url": "build/assets/items/cuckoo.png"
+            "image_url": "assets/items/cuckoo.png"
         },
         {
             "css_id": "grease pot",

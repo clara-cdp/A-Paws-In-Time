@@ -1,10 +1,10 @@
 <x-app-layout>
     <div class="h-screen flex flex-col justify-center items-center bg-black"
-        style="background-image: url('{{ asset('build/assets/images/bg_img.png') }}'); background-size: cover; background-position: center; animate-fade-out">
+        style="background-image: url('{{ asset('assets/images/bg_img.png') }}'); background-size: cover; background-position: center; animate-fade-out">
 
         <div class="pop-window w-[90%] p-6 ">
             <div>
-                <img src="{{ asset('build/assets/images/APIT_logico.png') }}" class="mb-5">
+                <img src="{{ asset('assets/images/APIT_logico.png') }}" class="mb-5">
 
                 @if (auth()->user()->player)
                     <p class="mb-6">Welcome back, <strong>{{ auth()->user()->player->character_name }}</strong>!</p>

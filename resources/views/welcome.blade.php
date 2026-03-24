@@ -2,7 +2,7 @@
 
     <div class="pop-window flex flex-col items-center mx-auto ">
         <div>
-            <img src="{{ asset('build/assets/images/APIT_logo_transp.png') }}" class="max-w-full h-auto">
+            <img src="{{ asset('assets/images/APIT_logo_transp.png') }}" class="max-w-full h-auto">
         </div>
 
         <div class="flex flex-col space-y-4 px-8">

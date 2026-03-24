@@ -3,13 +3,13 @@
         {
             "name": "Back in the present!",
             "description": "",
-            "image_url": "build/assets/rooms/pres_library_2.svg",
+            "image_url": "assets/rooms/pres_library_2.svg",
             "room_type": "hor"
         },
         {
             "name": "Outside the Mansion",
             "description": "",
-            "image_url": "build/assets/rooms/garden_2.svg",
+            "image_url": "assets/rooms/garden_2.svg",
             "room_type": "all"
         }
     ],
@@ -28,7 +28,7 @@
             "is_portable": true,
             "is_visible": false,
             "room": "Outside the Mansion",
-            "image_url": "build/assets/items/grease_jar.png"
+            "image_url": "assets/items/grease_jar.png"
         },
         {
             "css_id": "old rope",
@@ -60,7 +60,7 @@
             "is_portable": true,
             "is_visible": true,
             "room": "Back in the present!",
-            "image_url": "build/assets/items/magnifying_glass.png"
+            "image_url": "assets/items/magnifying_glass.png"
         },
         {
             "css_id": "painting 3",
@@ -116,7 +116,7 @@
             "is_portable": true,
             "is_visible": true,
             "room": "Outside the Mansion",
-            "image_url": "build/assets/items/seed.png"
+            "image_url": "assets/items/seed.png"
         },
         {
             "css_id": "grease pot-2",

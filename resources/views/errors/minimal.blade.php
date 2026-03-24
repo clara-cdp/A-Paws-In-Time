@@ -13,14 +13,14 @@
 
 <body>
     <div class="h-screen flex flex-col justify-center items-center bg-black"
-        style="background-image: url('{{ asset('build/assets/images/bg_img.png') }}'); background-size: cover; background-position: center;">
+        style="background-image: url('{{ asset('assets/images/bg_img.png') }}'); background-size: cover; background-position: center;">
 
         <div class="w-full sm:max-w-md md:max-w-[700px] px-6">
 
             <div class="pop-window p-8 text-center flex flex-col items-center">
 
                 <div class="w-full h-48 mb-6 rounded-lg border-2 border-orange-950 shadow-inner"
-                    style="background-image: url('{{ asset('build/assets/images/error_image.png') }}'); 
+                    style="background-image: url('{{ asset('assets/images/error_image.png') }}'); 
                             background-size: cover; background-position: center;">
                 </div>
 

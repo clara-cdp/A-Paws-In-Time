@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\RoomType;
 
-class room extends Model
+class Room extends Model
 {
     protected $fillable = ['name', 'description', 'image_url','room_type'];
 

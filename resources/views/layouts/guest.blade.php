@@ -19,7 +19,7 @@
 <body class="overflow-hidden">
 
     <div class="h-screen flex flex-col justify-center items-center bg-black"
-        style="background-image: url('{{ asset('build/assets/images/bg_img.png') }}'); background-size: cover; background-position: center; animate-fade-out">
+        style="background-image: url('{{ asset('assets/images/bg_img.png') }}'); background-size: cover; background-position: center; animate-fade-out">
 
         <div class="w-full sm:max-w-md md:max-w-[700px] px-6 py-4 ">
             {{ $slot }}
