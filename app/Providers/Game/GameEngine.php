@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Game;
+namespace App\Providers\Game;
 
-use App\Game\GameState;
+use App\Providers\Game\GameState;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;

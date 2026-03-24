@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Game;
+namespace App\Providers\Game;
 
 use App\Enums\Verb;
+
 class GameState {
     public string|null $verb = null;
     public int|null $itemId = null;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Game;
+namespace App\Providers\Game;
 
 use Illuminate\Support\Facades\DB;
 

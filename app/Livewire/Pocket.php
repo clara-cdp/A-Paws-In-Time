@@ -4,8 +4,8 @@ namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;
 
-use App\Game\GameState;
-use App\Game\GameAction;
+use App\Providers\Game\GameState;
+use App\Providers\Game\GameAction;
 use App\Enums\Verb;
 
 use App\Livewire\Playroom;

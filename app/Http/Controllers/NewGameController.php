@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Game\StartGame;
+use App\Providers\Game\StartGame;
 
 use Illuminate\Http\Request;
 

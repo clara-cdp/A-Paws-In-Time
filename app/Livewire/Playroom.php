@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
-use App\Game\GameState;
-use App\Game\GameAction;
+use App\Providers\Game\GameState;
+use App\Providers\Game\GameAction;
 
 use App\Models\event;
 use App\Models\Item;

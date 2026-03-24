@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Game;
+namespace App\Providers\Game;
 
 use Illuminate\Support\Facades\Log;
 
-use App\Game\GameState;
-use App\Game\GameEngine;
+use App\Providers\Game\GameState;
+use App\Providers\Game\GameEngine;
 
 class GameAction
 {
