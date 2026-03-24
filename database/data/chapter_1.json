@@ -5,6 +5,12 @@
             "description": "A lush garden outside the Mad Doctor's mansion.",
             "image_url": "build/assets/rooms/garden_1.svg",
             "room_type": "all"
+        },
+        {
+            "name": "Intro",
+            "description": "An introduction.",
+            "image_url": "build/assets/rooms/intro.svg",
+            "room_type": "hor"
         }
     ],
     "items": [
@@ -15,6 +21,14 @@
             "is_visible": true,
             "room": null,
             "image_url": "build/assets/items/redHerring.png"
+        },
+        {
+            "css_id": "start",
+            "description": "Click 'GO TO' to start your journey",
+            "is_portable": false,
+            "is_visible": true,
+            "room": "Intro",
+            "image_url": null
         },
         {
             "css_id": "tree",
@@ -123,6 +137,15 @@
     ],
     "events": [
         {
+            "verb_trigger": "GO TO",
+            "target_item": "start",
+            "required_item": null,
+            "unlocked_item": null,
+            "target_room": "Mansion's Garden",
+            "next_step": 1,
+            "reward": "Here we Go!"
+        },
+        {
             "verb_trigger": "PUSH",
             "target_item": "tree",
             "required_item": null,
@@ -146,7 +169,8 @@
             "required_item": "tennis ball",
             "unlocked_item": "mansion's door",
             "target_room": null,
-            "next_step": 1,
+            "step_required": 1,
+            "next_step": 2,
             "reward": "Go play! GOOD BOY!! "
         },
         {
@@ -155,8 +179,8 @@
             "required_item": "key",
             "unlocked_item": null,
             "target_room": null,
-            "step_required": 1,
-            "next_step": 2,
+            "step_required": 2,
+            "next_step": 3,
             "reward": "It works!"
         }
     ]

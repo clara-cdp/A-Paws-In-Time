@@ -64,7 +64,7 @@
             "required_item": null,
             "unlocked_item": null,
             "target_room": "A Library",
-            "step_required": 2,
+            "step_required": 3,
             "next_step": 0,
             "reward": "Let's go! "
         },
@@ -74,7 +74,7 @@
             "required_item": null,
             "unlocked_item": null,
             "target_room": "Mansion's Garden",
-            "step_required": 2,
+            "step_required": 3,
             "next_step": 0
         }
     ]

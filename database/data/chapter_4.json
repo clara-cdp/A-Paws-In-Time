@@ -174,7 +174,7 @@
             "required_item": null,
             "unlocked_item": null,
             "target_room": "Outside the Mansion",
-            "step_required": 3,
+            "step_required": 4,
             "next_step": 0
         },
         {
@@ -183,7 +183,7 @@
             "required_item": null,
             "unlocked_item": null,
             "target_room": "Back in the present!",
-            "step_required": 3,
+            "step_required": 4,
             "next_step": 0,
             "reward": "let's go! "
         },
@@ -193,8 +193,8 @@
             "required_item": "gear",
             "unlocked_item": "time door",
             "target_room": "Back in the present!",
-            "step_required": 3,
-            "next_step": 4
+            "step_required": 4,
+            "next_step": 5
         },
         {
             "verb_trigger": "PULL",
@@ -202,7 +202,7 @@
             "required_item": null,
             "unlocked_item": "rope",
             "target_room": null,
-            "step_required": 4,
+            "step_required": 5,
             "next_step": 0,
             "reward": "It might break..."
         },
@@ -212,7 +212,7 @@
             "required_item": null,
             "unlocked_item": null,
             "target_room": "Old Library",
-            "step_required": 4,
+            "step_required": 5,
             "next_step": 0
         },
         {
@@ -221,7 +221,7 @@
             "required_item": null,
             "unlocked_item": null,
             "target_room": "Back in the present!",
-            "step_required": 4,
+            "step_required": 5,
             "next_step": 0
         },
         {
@@ -230,7 +230,7 @@
             "required_item": "jar",
             "unlocked_item": "grease jar",
             "target_room": null,
-            "step_required": 4,
+            "step_required": 5,
             "next_step": 0,
             "reward": "filled the glass with grease, yak!"
         },
@@ -240,7 +240,7 @@
             "required_item": "grease jar",
             "unlocked_item": "new rope",
             "target_room": null,
-            "step_required": 4,
+            "step_required": 5,
             "next_step": 0,
             "reward": "This should last for ages."
         },
@@ -250,8 +250,8 @@
             "required_item": null,
             "unlocked_item": "secret door",
             "target_room": null,
-            "step_required": 4,
-            "next_step": 5
+            "step_required": 5,
+            "next_step": 6
         }
     ]
 }

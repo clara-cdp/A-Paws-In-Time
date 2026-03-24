@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Livewire;
-use App\Game\GameState;
+use App\Providers\Game\GameState;
 use App\Enums\Verb;
 use Livewire\Component;
 

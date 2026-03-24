@@ -10,17 +10,17 @@
 
 </head>
 
-<body class="bg-black m-0 p-0 overflow-hidden">
+<body class="bg-black overflow-hidden">
 
     <div class="loader transition-opacity duration-1000">
         <div id="splash-screen" class="fixed inset-0 w-screen h-screen flex justify-center items-center bg-black">
 
-            <picture class="w-full h-full">
+            <picture class="w-full h-full m-8 p-8">
                 <source media="(min-width: 1024px)" srcset="{{ asset('build/assets/images/APIT_cover_desktop.png') }}">
                 <source media="(min-width: 768px)" srcset="{{ asset('build/assets/images/APIT_cover_tablet.png') }}">
 
                 <img src="{{ asset('build/assets/images/APIT_cover_mobile.png') }}" alt="Welcome"
-                    class="w-full h-full object-cover object-center block">
+                    class="w-full h-full object-contain object-center block">
             </picture>
 
         </div>

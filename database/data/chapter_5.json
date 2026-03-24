@@ -5,13 +5,19 @@
             "description": "Some items have shifted",
             "image_url": "build/assets/rooms/attic.svg",
             "room_type": "ver"
+        },
+        {
+            "name": "The End",
+            "description": "Some items have shifted",
+            "image_url": "build/assets/rooms/end.svg",
+            "room_type": "hor"
         }
     ],
     "items": [
         {
             "css_id": "kitty",
             "description": "My cat!",
-            "is_portable": true,
+            "is_portable": false,
             "is_visible": true,
             "room": "The Attic",
             "image_url": "build/assets/items/kitty.png"
@@ -24,8 +30,17 @@
             "required_item": null,
             "unlocked_item": null,
             "target_room": "The Attic",
-            "step_required": 5,
-            "next_step": 6
+            "step_required": 6,
+            "next_step": 7
+        },
+        {
+            "verb_trigger": "RESCUE",
+            "target_item": "kitty",
+            "required_item": null,
+            "unlocked_item": null,
+            "target_room": "The End",
+            "step_required": 7,
+            "next_step": 8
         }
     ]
 }
