@@ -1,8 +1,237 @@
-@import 'tailwindcss';
+@font-face {
+    font-family: 'PressStart2P-Regular';
+    src: url('../fonts/PressStart2P-Regular.ttf') format('woff2');
+}
 
-@source '../views';
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+/* ---------------  global ------------------------- */
+
+body {
+    font-family: 'PressStart2P-Regular', sans-serif;
+    color: rgb(75, 85, 99);
+
+}
+
+.pop-window {
+    max-width: 500px;
+    width: 100%;
+    text-align: left;
+
+    border: rgb(78, 42, 1) solid 8px;
+    background-color: rgb(237, 212, 184);
+    padding-bottom: 20px;
+    padding: 10;
+    gap: 10px;
+
+    box-shadow:
+        0 -12px 0 0 rgb(78, 42, 1),
+        0 12px 0 0 rgb(78, 42, 1),
+        -12px 0 0 0 rgb(78, 42, 1),
+        12px 0 0 0 rgb(78, 42, 1),
+
+        -8px -8px 0 0 rgb(48, 26, 1),
+        8px -8px 0 0 rgb(78, 42, 1),
+        -8px 8px 0 0 rgb(78, 42, 1),
+        8px 8px 0 0 rgb(78, 42, 1),
+
+        -4px -4px 0 0 rgb(78, 42, 1),
+        4px -4px 0 0 rgb(78, 42, 1),
+        -4px 4px 0 0 rgb(78, 42, 1),
+        4px 4px 0 0 rgb(78, 42, 1);
+
+    border-top: 8px solid rgba(255, 255, 255, 0.2);
+    border-left: 8px solid rgba(255, 255, 255, 0.2);
+
+    border-bottom: 8px solid rgba(0, 0, 0, 0.1);
+    border-right: 8px solid rgba(0, 0, 0, 0.1);
+
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+/* ------------------ profile fields --------------*/
+
+.profile-window {
+    max-width: 700;
+    width: 100%;
+    text-align: left;
+
+    border: rgb(217, 100, 3) solid 8px;
+    background-color: rgb(237, 212, 184);
+    padding-bottom: 20px;
+    padding: 10;
+    gap: 10px;
+
+
+    box-shadow:
+        0 -12px 0 0 rgb(78, 42, 1),
+        0 12px 0 0 rgb(78, 42, 1),
+        -12px 0 0 0 rgb(78, 42, 1),
+        12px 0 0 0 rgb(78, 42, 1),
+
+        -8px -8px 0 0 rgb(78, 42, 1),
+        8px -8px 0 0 rgb(78, 42, 1),
+        -8px 8px 0 0 rgb(78, 42, 1),
+        8px 8px 0 0 rgb(78, 42, 1),
+
+        -4px -4px 0 0 rgb(78, 42, 1),
+        4px -4px 0 0 rgb(78, 42, 1),
+        -4px 4px 0 0 rgb(78, 42, 1),
+        4px 4px 0 0 rgb(78, 42, 1);
+
+    border-top: 8px solid rgba(255, 255, 255, 0.2);
+    border-left: 8px solid rgba(255, 255, 255, 0.2);
+
+    border-bottom: 8px solid rgba(0, 0, 0, 0.1);
+    border-right: 8px solid rgba(0, 0, 0, 0.1);
+
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+/* ------------------ button styles  --------------*/
+
+.go-button {
+
+    position: relative;
+    margin: 18px 0 16px 0;
+
+    width: 100%;
+    max-width: 500px;
+    padding: 16px 32px;
+
+
+    background-color: rgb(241, 196, 141);
+    color: #3e260e;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+
+    box-shadow:
+
+        0 -4px 0 0 rgb(78, 42, 1), 0 4px 0 0 rgb(78, 42, 1),
+        -4px 0 0 0 rgb(78, 42, 1), 4px 0 0 0 rgb(78, 42, 1),
+        0 8px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.go-button::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    background: inherit;
+    z-index: -1;
+}
+
+.go-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+    right: -4px;
+    background: inherit;
+    z-index: -1;
+}
+
+.go-button:hover {
+    background-color: rgb(100, 55, 5);
+    color: rgb(241, 196, 141)
+}
+
+.go-button:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 -4px 0 0 rgb(78, 42, 1),
+        0 4px 0 0 rgb(78, 42, 1),
+        -4px 0 0 0 rgb(78, 42, 1),
+        4px 0 0 0 rgb(78, 42, 1),
+        0 4px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+/* delete button:*/
+
+.danger-button {
+
+    position: relative;
+    margin: 18px 0 16px 0;
+
+    width: 100%;
+    max-width: 500px;
+    padding: 16px 32px;
+
+
+    background-color: rgb(237, 146, 121);
+    color: #840808;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+
+    box-shadow:
+
+        0 -4px 0 0 #840808, 0 4px 0 0 #840808,
+        -4px 0 0 0 #840808, 4px 0 0 0#840808,
+        0 8px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.danger-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+    right: -4px;
+    background: inherit;
+    z-index: -1;
+}
+
+.danger-button:hover {
+    background-color: #840808;
+    color: rgb(241, 196, 141)
+}
+
+.danger-button:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 -4px 0 0 #840808,
+        0 4px 0 0 #840808,
+        -4px 0 0 0 #840808,
+        4px 0 0 0 #840808,
+        0 4px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+
+/* ---------------  Scrollbar ------------------------- */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 10px;
+}
+
+/* --------------- item  ------------------------- */
+.no-drag {
+    pointer-events: auto;
+    touch-action: manipulation;
+}
+
+
+.hidden_interactive_shapes {
+    pointer-events: all;
+    visibility: visible;
 }
