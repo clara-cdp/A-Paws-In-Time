@@ -24,7 +24,7 @@ restarting the clock before the "Perfect Moment" becomes a permanent cage.
 - **GitFlow:** Developed using a feature-branch workflow with documented Pull Requests.
 
 
-## 📂 Project Requisits and Structure
+## 📂 Project Requiriments and Structure
 ### **ERR Diagram (MER):** database state act as a core for the game logic to work
 
 _add new db diagram_
