@@ -171,7 +171,7 @@
                 setTimeout(() => {
                     dialog.classList.add('opacity-0');
                     setTimeout(() => dialog.classList.add('hidden'), 300);
-                }, 2000);
+                }, 4000);
             });
 
             // --- room items -----------------------------------------------------------------------
