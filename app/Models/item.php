@@ -39,13 +39,14 @@ class Item extends Model
     protected static function booted()
     {
         static::addGlobalScope('player', function (Builder $builder) {
+            
+            $activePlayerId = session('active_player_id');
 
-            if (Auth::check()) {
-                $playerId = Auth::user()->player?->id;
-
-                if ($playerId) {
-                    $builder->where('player_id', $playerId);
-                }
+            if ($activePlayerId) {
+                $builder->where('player_id', $activePlayerId);
+            } else {
+        
+                $builder->whereNull('player_id');
             }
         });
     }

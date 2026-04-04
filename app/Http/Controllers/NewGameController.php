@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Providers\Game\StartGame;
-
 use Illuminate\Http\Request;
-
-
 
 class NewGameController extends Controller
 {
@@ -17,28 +14,35 @@ class NewGameController extends Controller
 
     public function store(Request $request, StartGame $startGame)
     {
-        if ($request->user()->player) {
-            return redirect('/game');
+        if ($request->user()->players()->count() >= 5) {
+            return redirect()->route('game.new')->with('error', 'Too many characters.');
         }
 
         $request->validate([
-            'character_name' => 'required|string|max:45',
+            'character_name' => 'required|string|max:45|min:2',
         ]);
 
-        $startGame->handle(
+        $player = $startGame->handle(
             $request->user(),
             $request->character_name
         );
 
-        return redirect('/game');
+        session(['active_player_id' => $player->id]);
+
+        return redirect()->route('game.play', ['id' => $player->id]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, $id)
     {
-        if ($request->user()->player) {
-            $request->user()->player->delete();
+        $player = $request->user()->players()->find($id);
+
+        if ($player) {
+            if (session('active_player_id') == $id) {
+                session()->forget('active_player_id');
+            }
+            $player->delete();
         }
 
-        return redirect()->route('game.new')->with('status', 'Character deleted. Start fresh!');
+        return redirect()->route('game.new')->with('status', 'Character deleted.');
     }
 }

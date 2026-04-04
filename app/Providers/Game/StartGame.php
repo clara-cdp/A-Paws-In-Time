@@ -24,7 +24,6 @@ class StartGame
                 'story_step' => 0,
             ]);
 
-           
             $this->createPlayerWorld($player);
 
             $pocket = Pocket::create([
@@ -39,9 +38,10 @@ class StartGame
 
     protected function giveStarterItem(Pocket $pocket, Player $player): void
     {
-        $masterStarter = Item::starter();
+       $masterStarter = Item::starter();
 
-        $playerFish = Item::where('player_id', $player->id)
+        $playerFish = Item::withoutGlobalScopes()
+            ->where('player_id', $player->id)
             ->where('css_id', $masterStarter->css_id)
             ->firstOrFail();
 
@@ -51,6 +51,7 @@ class StartGame
         ]);
     }
 
+    
     protected function createPlayerWorld(Player $player): void
     {
         $items = Item::withoutGlobalScopes()
@@ -58,7 +59,6 @@ class StartGame
             ->get();
 
         foreach ($items as $item) {
-
             Item::create([
                 'player_id'   => $player->id,
                 'css_id'      => $item->css_id,
@@ -71,4 +71,5 @@ class StartGame
             ]);
         }
     }
+
 }
