@@ -1,15 +1,15 @@
 <x-app-layout>
-    <div class="h-screen flex flex-col justify-center items-center bg-black"
-        style="background-image: url('{{ asset('assets/images/bg_img.png') }}'); background-size: cover; background-position: center; animate-fade-out">
+    <div class="min-h-screen flex flex-col justify-center items-center bg-black"
+        style="background-image: url('{{ asset('assets/images/bg_img.png') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
 
-        <div class="pop-window w-[90%] p-6 ">
+        <div class="pop-window w-[90%] p-6 mt-10">
             <div>
                 <img src="{{ asset('assets/images/APIT_logico.png') }}" class="mb-5">
                 <form method="POST" action="{{ route('game.store') }}">
                     @csrf
                     <p>choose your character's name before to start:</p><br>
                     <input type="text" name="character_name" required
-                        class="border-gray-300 focus:border-teal-200 focus:ring-blue-500 rounded-md shadow-sm w-full max-w-[500px] text-black"><br>
+                        class="border-2 border-orange-800 focus:border-teal-200 focus:ring-blue-500 shadow-sm w-full max-w-[500px] text-black"><br>
 
                     <button type="submit" class="go-button active:scale-95 transition-all mt-2">
                         Start Adventure
@@ -20,11 +20,11 @@
 
         {{-- saved games -------------------------------------------------------------------------------------------------- --}}
         @if (auth()->user()->players->isNotEmpty())
-            <div class="pop-window w-[90%] md:w-[80%] mt-12 p-6">
-                <p class="font-bold mb-4">Your Saved Games:</p>
+            <div class="pop-window w-[90%] md:w-[80%] mt-12 p-6 mb-20 gap-2">
+                <p class="font-bold mb-4 gap-2">Your Saved Games:</p>
 
                 @foreach (auth()->user()->players as $player)
-                    <div class="border border-gray-900 p-4 mb-4">
+                    <div class="border-4 border-gray-900 p-6 mb-6 shadow-md ">
                         <h3 class="mb-2 uppercase">{{ $player->character_name }}</h3>
                         <div>
                             <div class="flex gap-2 items-center">
