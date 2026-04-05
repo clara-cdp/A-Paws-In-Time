@@ -76,14 +76,22 @@ class GameEngine
         }
 
         // -- Story Checks --
+        if ($player->logEntries()->where('event_id', $event->id)->exists()) {
+            return "I've already done that!";
+        }
+
         if ($player->story_step < $event->step_required) {
             return "I'll try again later";
         }
-        if ($event->next_step > $event->step_required && $player->story_step >= $event->next_step) {
+
+        if ($event->next_step > 0 && $player->story_step >= $event->next_step) {
             return "I've already done that!";
         }
 
         $messages = [];
+
+        // -- logs
+        $player->logEntries()->firstOrCreate(['event_id' => $event->id]);
 
         // -- Room Transition --
         if ($event->target_room_id) {
@@ -91,24 +99,18 @@ class GameEngine
             $messages[] = "You step through the doorway.";
         }
 
-        // -- logs
-        $player->logEntries()->firstOrCreate(['event_id' => $event->id]);
-
         // -- progress
-        if ($event->next_step > 0 && $event->next_step > $player->story_step) {
-            $player->update(['story_step' => $event->next_step]);
-            
+        if ($event->next_step > 0 && 
+            $event->next_step > $player->story_step) {
+            $player->update(['story_step' => $event->next_step]);     
         }
 
         // -- remove always pocket items
         if ($pocketItem) {
-            Item::where('css_id', $pocketItem->css_id)
-                ->where('player_id', $pocketItem->player_id)
-                ->update(['is_visible' => false]);
+            $pocketItem->update(['is_visible' => false]);
         }
 
         // -- unlocking objects
-
         if ($event->unlocked_item_id) {
             $masterUnlock = Item::withoutGlobalScopes()->find($event->unlocked_item_id);
 
