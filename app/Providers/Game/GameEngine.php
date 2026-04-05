@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Event;
 use App\Enums\Verb;
+use App\Models\Player;
 
 class GameEngine
 {
@@ -15,7 +16,8 @@ class GameEngine
     public function resolve(GameState $state): ?string
     {
 
-        $player = Auth::user()->Player;
+        //$player = Auth::user()->Player;
+        $player = Player::find(session('active_player_id'));
         $verb = $state->getVerb();
 
         $targetItem = Item::where('player_id', $player->id)
@@ -106,26 +108,28 @@ class GameEngine
         }
 
         // -- unlocking objects
-        if ($event->unlocked_item_id) {
 
+        if ($event->unlocked_item_id) {
             $masterUnlock = Item::withoutGlobalScopes()->find($event->unlocked_item_id);
 
-            $playerItem = Item::where('player_id', $player->id)
-                ->where('css_id', $masterUnlock->css_id)
-                ->first();
+            if ($masterUnlock) {
+                $playerItem = Item::where('player_id', $player->id)
+                    ->where('css_id', $masterUnlock->css_id)
+                    ->first();
 
-            if ($playerItem) {
-                $playerItem->update(['is_visible' => true]);
+                if ($playerItem) {
+                    $playerItem->update(['is_visible' => true]);
 
-                if (is_null($playerItem->room_id)) {
-                    $player->pocket->items()->syncWithoutDetaching([$playerItem->id]);
+                    if (is_null($playerItem->room_id)) {
+                        $player->pocket->items()->syncWithoutDetaching([$playerItem->id]);
+                    }
                 }
             }
-
             $messages[] = $event->reward;
         }
 
         return !empty($messages) ? implode(' ', $messages) : "You did something!";
+
     }
 }
 

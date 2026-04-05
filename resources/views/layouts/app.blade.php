@@ -13,9 +13,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="h-screen">
+<body class="min-h-screen">
     <div class="flex flex-col h-full">
-        <livewire:layout.navigation />
+
+        <nav class="sticky top-0 z-50">
+            <livewire:layout.navigation />
+        </nav>
 
         <!-- Page Heading -->
         @if (isset($header))

@@ -30,7 +30,8 @@ class Playroom extends Component
 
     public function clickItem(int $id)
     {
-        $player = Auth::user()->Player;
+        //$player = Auth::user()->Player;
+        $player = Player::find(session('active_player_id'));
         $startingRoomId = $player->room_id;
 
         GameState::fromSession()->setTargetItemId($id);
@@ -66,10 +67,13 @@ class Playroom extends Component
 
     public function render()
     {
-        $player = Auth::user()->Player;
-        $roomId = $player->room_id ?? 1;
-        $room = Room::findOrFail($roomId);
+        //$player = Auth::user()->Player;
+        $player = Player::find(session('active_player_id'));
+        //$roomId = $player->room_id ?? 1;
+        //$room = Room::findOrFail($roomId);
 
+        $room = Room::findOrFail($player->room_id);
+        
         $items = Item::where('room_id', $room->id)->get();
         $removedItems = Item::whereNull('room_id')->pluck('css_id');
 

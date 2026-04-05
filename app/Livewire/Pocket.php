@@ -24,8 +24,9 @@ class Pocket extends Component
 
     public function mount()
     {
-        $player = Auth::user()->player;
-        $this->playerName = $player->character_name ?? 'Guest';
+        //$player = Auth::user()->player;
+        $player = Player::find(session('active_player_id'));
+        $this->playerName = $player->character_name;
     }
 
     #[On('pocket-update')]
@@ -51,7 +52,9 @@ class Pocket extends Component
 
     public function render()
     {
-        $items = Auth::user()->player->pocket->items()
+        $player = Player::find(session('active_player_id'));    
+    
+        $items = $player->pocket->items()
             ->where('is_visible', true)
             ->get();
 
