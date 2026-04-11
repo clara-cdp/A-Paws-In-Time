@@ -91,11 +91,10 @@ npm run build
 #### 3. Environment Setup:
 
 copy enviroment file:
-.env.example and name it .env
-
-then run
-----php artisan key:generate
-Update your .env file with database 
+```
+cp .env.example .env
+```
+And Update it
 
 ```
 APP_NAME='A Paws in Time'
