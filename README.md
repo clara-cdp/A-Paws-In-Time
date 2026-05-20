@@ -1,5 +1,6 @@
-
 <img width="2187" height="793" alt="APIT_logico" src="https://github.com/user-attachments/assets/a7220e15-7b22-40de-88c0-279debe87814" />
+
+
 
 # A Point-and-Click Adventure Built with Laravel
 
@@ -125,8 +126,15 @@ php artisan serve
 ```
 - Visit http://localhost:8000 to start your adventure.
 
-Ensure your .env is configured for Mailtrap or Mailpit to test the recovery emails.
+Ensure your .env is configured for Mailtrap or Mailpit to test the recovery emails.  
 
+## 🤫 sneak peak 
+<img width="3840" height="1860" alt="Screenshot (882)" src="https://github.com/user-attachments/assets/bdeddc07-beb8-4b58-830f-c1a18a00e4ca" />
+
+<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/cb3f98b1-24b5-4f34-a355-c92d75c0e366" />
+<img width="3838" height="1849" alt="3_Screenshot 2026-05-20 121808" src="https://github.com/user-attachments/assets/e0e61c08-1eb0-4194-ba8c-e0cf935ba722" />
+
+---- 
 ![dancing_kitty](https://github.com/user-attachments/assets/03b12ee7-b55d-4173-91d5-748bd86da40c)
 
 ### NEXT TO COME:
