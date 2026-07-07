@@ -75,23 +75,26 @@ class GameEngine
             return "That doesn't seem to do anything...";
         }
 
-        // -- Story Checks --
-        if ($player->logEntries()->where('event_id', $event->id)->exists()) {
+        //allows to back and forward
+        $isRepeatableTravel =$event->verb_trigger === Verb::GO_TO->value &&
+            !is_null($event->target_room_id) &&
+            (int) $event->next_step === 0;
+
+        // check event - events 
+        if ($event->next_step > $event->step_required && $player->progress >= $event->next_step) {
             return "I've already done that!";
         }
 
+        if (!$isRepeatableTravel && $player->logEntries()->where('event_id', $event->id)->exists()) {
+            return "I've already done that!";
+        }
+
+        // check progress
         if ($player->story_step < $event->step_required) {
             return "I'll try again later";
         }
 
-        if ($event->next_step > 0 && $player->story_step >= $event->next_step) {
-            return "I've already done that!";
-        }
-
         $messages = [];
-
-        // -- logs
-        $player->logEntries()->firstOrCreate(['event_id' => $event->id]);
 
         // -- Room Transition --
         if ($event->target_room_id) {
@@ -99,7 +102,10 @@ class GameEngine
             $messages[] = "You step through the doorway.";
         }
 
-        // -- progress
+        // -- logs
+        $player->logEntries()->firstOrCreate(['event_id' => $event->id]);
+
+        // -- update progress
         if ($event->next_step > 0 && 
             $event->next_step > $player->story_step) {
             $player->update(['story_step' => $event->next_step]);     
