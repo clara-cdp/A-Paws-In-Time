@@ -13,7 +13,8 @@
 <body class="bg-black h-full overflow-hidden">
 
     {{-- ------------------------------- splash screen ------------------------------------------------------------- --}}
-    <div x-data="{ showCover: true }" x-init="setTimeout(() => showCover = false, 3000)" 
+    <div x-data="{showCover: document.referrer.endsWith('/new-game')}" 
+     x-init="if (showCover) {setTimeout(() => showCover = false, 3000);}" 
         x-show="showCover"
         x-transition:leave="transition ease-in duration-500" x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black">
